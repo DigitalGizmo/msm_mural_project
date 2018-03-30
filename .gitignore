@@ -1,0 +1,23 @@
+# extensions
+*.pyc
+*.log
+*.jpg
+*.png
+*.gif
+*.geojson
+
+# files
+.DS_Store
+secrets.json
+robots.txt
+.htaccess
+
+# directories
+**/.sass-cache
+**/.sass-cache/*
+static/
+webstat/
+mural/local_static/images
+mural/local_static/js/images
+
+# allow

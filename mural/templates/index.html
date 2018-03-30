@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}Maine State Museum - Worker's Mural{% endblock %}
+
+{% block full_page %}
+ 
+  <div class="home">
+
+  	<h3>Learn About</h3>
+    <h1>The History of Maine Labor</h1>
+
+    <svg xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 3744 754">
+
+      <image id="document" x="0" y="0" xlink:href="{% static 'panels/mural.jpg' %}" width="3744" height="754" />
+      <!-- images/panels-home.jpg -->
+      
+      <a xlink:href="/panels/apprenticeship/1/">
+        <rect id="panel1" x="2.5" y="2" class="mural-panel-hotspot" width="332" height="750"/>
+      </a>
+
+      <a xlink:href="/panels/child-labor/1/">
+        <rect id="panel2" x="342" y="2" class="mural-panel-hotspot" width="332" height="750"/>
+      </a>
+
+      <a xlink:href="/panels/women-in-mills/1/">
+        <rect id="panel3" x="681.2" y="2" class="mural-panel-hotspot" width="332" height="750"/>
+      </a>
+
+      <a xlink:href="">
+        <rect id="panel4" x="1020.2" y="2" class="mural-panel-hotspot" width="336.8" height="750"/>
+      </a>
+
+      <a xlink:href="">
+        <rect id="panel5" x="1362.2" y="2" class="mural-panel-hotspot" width="332" height="750"/>
+      </a>
+
+      <a xlink:href="">
+        <rect id="panel6" x="1700.2" y="2" class="mural-panel-hotspot" width="332" height="750"/>
+      </a>
+
+      <a xlink:href="">
+        <rect id="panel7" x="2038.2" y="2" class="mural-panel-hotspot" width="332" height="750"/>
+      </a>
+
+      <a xlink:href="">
+        <rect id="panel8" x="2377.2" y="2" class="mural-panel-hotspot" width="334.1" height="750"/>
+      </a>
+
+      <a xlink:href="">
+        <rect id="panel9" x="2717.2" y="2" class="mural-panel-hotspot" width="332" height="750"/>
+      </a>
+
+      <a xlink:href="">
+        <rect id="panel10" x="3056.2" y="2" class="mural-panel-hotspot" width="333.8" height="750"/>
+      </a>
+
+      <a xlink:href="">
+        <rect id="panel11" x="3396.2" y="2" class="mural-panel-hotspot" width="345.2" height="750"/>
+      </a>
+
+    </svg>
+
+    <p class="prompt">Tap a panel to learn more</p>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+  </div>
+
+{% endblock full_page %}

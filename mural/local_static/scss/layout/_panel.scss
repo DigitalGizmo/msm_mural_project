@@ -1,0 +1,35 @@
+// panel layout
+
+.wrapper {
+	//margin: 0.8em;
+	//padding: $small-spacing;
+	list-style: none;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-gap: 20px;
+	grid-template-areas:
+		"a b b c"
+		"d e e e";
+	color: $dark-gray;
+	height: 95vh;
+}
+
+.panel-image {
+	grid-area: d;
+}
+
+.main {
+	grid-area: e;
+	background-color: white;
+	margin-bottom: $small-spacing;
+	overflow: scroll;
+	padding: $base-spacing;
+
+	a {
+		color: $dark-gray;
+
+		&:hover {
+			color: $accent-color;
+		}
+	}
+}

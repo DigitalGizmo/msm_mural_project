@@ -1,0 +1,79 @@
+// navigation
+
+.home-nav {
+	grid-area: a;
+}
+
+.panel-title {
+	color: $accent-color;
+	grid-area: b;
+	padding-left: $base-spacing;
+}
+
+.panel-nav {
+	grid-area: c;
+	text-align: right;
+}
+
+.home-nav, .panel-nav {
+	font-size: $small-font-size;
+	letter-spacing: 0.025em;
+	text-transform: uppercase;	
+}
+
+#tiny-panels {
+	cursor: pointer;
+	//display: block;
+	fill: $accent-color;
+	fill-opacity: 0.25;
+	stroke: white;
+  stroke-width: 2;
+}
+
+// for tab nav of main panel content area
+
+.tabs ul {
+	font-size: $small-font-size;
+	letter-spacing: 0.025em;
+	margin-bottom: $base-spacing;
+	text-transform: uppercase;
+
+	li {
+		display: inline;
+		margin: 4px $base-spacing $small-spacing 0;;
+		background-color: $light-gray;
+		padding: $small-spacing $base-spacing;
+	}
+}
+
+.tabs ul li.selected {
+	background-color: $dark-gray;
+	color: white;			
+}
+
+.learn-more {
+	clear: left;
+	background-color: $light-gray;
+	margin-left:  -$base-spacing;
+	margin-right:  -$base-spacing;
+	margin-bottom: -$base-spacing;
+	padding: $small-spacing $base-spacing;
+
+	ul li {
+		display: inline-block;
+		font-size: $smallish-font-size;
+		line-height: $heading-line-height;
+		margin-right: $base-spacing;
+		vertical-align: top;
+		width: 20%;
+
+		img {
+			border: $darker-border;
+		}
+
+		span {
+			display: block;
+			color: $medium-gray
+		}
+	}
+}
