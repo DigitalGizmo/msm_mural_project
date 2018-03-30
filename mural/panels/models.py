@@ -17,12 +17,12 @@ class Panel(models.Model):
 class Article(models.Model):
     """docstring for Article"""
     ARTICLE_TYPE = (
-        (1,'Introduction'),
-        (2,'Foreground'),
-        (3,'Background'),
+        ('intro','Introduction'),
+        ('fore','Foreground'),
+        ('back','Background'),
     )
     panel = models.ForeignKey('panels.Panel', on_delete=models.CASCADE)
-    article_type = models.IntegerField(default=1, 
+    article_type = models.CharField(max_length=12, default='intro', 
         choices=ARTICLE_TYPE)
     title = models.CharField(max_length=48, default='Title goes here')
     image_name = models.CharField(max_length=32, blank=True, default='')

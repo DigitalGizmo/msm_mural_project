@@ -27,33 +27,7 @@
 
       <image id="document" x="0" y="0" xlink:href="{% static 'panels/panelpics/' %}{{ object.slug }}.jpg" width="874" height="2073" />
 
-      {% include 'panels/svg_includes/_'|add:object.slug|add:'-'|add:article.get_article_type_display|add:'.html' %}
-
-      <a class="pop_item" href="pops/hotspot-lunch-bucket.html">
-        <circle id="bucket-2" data-name="bucket" class="hotspot" cx="459.01" cy="1383.5" r="72.01"/>
-      </a>
-
-      <a class="pop_item" href="pops/hotspot-bandaged-hand.html">
-        <circle id="bandaged-hand" data-name="bandaged-hand" class="hotspot" cx="666.71" cy="1216.33" r="72.01"/>
-      </a>
-
-
-      <a class="pop_item" href="pops/hotspot-newsboys.html">
-        <circle id="newsboys" data-name="newsboys" class="hotspot" cx="431.92" cy="136.79" r="72.01"/>
-      </a>
-
-      <a class="pop_item" href="pops/hotspot-textile-workers.html">
-        <circle id="textile-workers" data-name="textile-workers" class="hotspot" cx="531.01" cy="832.48" r="72.01"/>
-      </a>
-
- 
-      <a class="pop_item" href="pops/hotspot-textile-workers2.html">
-        <circle id="textile-workers2" data-name="textile-workers2" class="hotspot" cx="164" cy="202" r="72.01"/>
-      </a>
-
-      <a class="pop_item" href="pops/hotspot-cutters.html">
-        <circle id="cutters" data-name="cutters" class="hotspot" cx="182.68" cy="564.17" r="72.01"/>
-      </a>
+      {% include 'panels/svg_includes/_'|add:object.slug|add:'-'|add:article.article_type|add:'.html' %}
 
     </svg>
 
@@ -63,18 +37,18 @@
 
   	<nav class="tabs">
   		<ul>
-        <li {% if article.article_type == 1 %} class="selected"{% endif %}>
-          {% if article.article_type != 1 %}<a href="{% url 'panels:panel_detail' object.slug 1 %}">{% endif %}Introduction
-          {% if article.article_type != 1 %}</a>{% endif %}
+        <li {% if article.article_type == 'intro' %} class="selected"{% endif %}>
+          {% if article.article_type != 'intro' %}<a href="{% url 'panels:panel_detail' object.slug 'intro' %}">{% endif %}Introduction
+          {% if article.article_type != 'intro' %}</a>{% endif %}
         </li>
-        <li {% if article.article_type == 2 %} class="selected"{% endif %}>
-          {% if article.article_type != 2 %}<a href="{% url 'panels:panel_detail' object.slug 2 %}">{% endif %}
+        <li {% if article.article_type == 'fore' %} class="selected"{% endif %}>
+          {% if article.article_type != 'fore' %}<a href="{% url 'panels:panel_detail' object.slug 'fore' %}">{% endif %}
             {{ object.foreground_title|safe }} 
-          {% if article.article_type != 2 %}</a>{% endif %}
+          {% if article.article_type != 'fore' %}</a>{% endif %}
         </li>
-        <li {% if article.article_type == 3 %} class="selected"{% endif %}>
-          {% if article.article_type != 3 %}<a href="{% url 'panels:panel_detail' object.slug 3 %}">{% endif %}Background
-          {% if article.article_type != 3 %}</a>{% endif %}
+        <li {% if article.article_type == 'back' %} class="selected"{% endif %}>
+          {% if article.article_type != 'back' %}<a href="{% url 'panels:panel_detail' object.slug 'back' %}">{% endif %}Background
+          {% if article.article_type != 'back' %}</a>{% endif %}
         </li>
 			</ul>
 		</nav>
