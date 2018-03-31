@@ -57,3 +57,6 @@ and then
         Options +Includes +ExecCGI
 	</Directory>
 
+maint
+::
+	touch /var/www/msm_user/data/www/msm-mural.digitalgizmo.com/mural/config/wsgi.py
