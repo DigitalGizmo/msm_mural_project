@@ -31,6 +31,7 @@ pip installs
 	pip install Unipath
 
 set up apache with wsgi
+in /etc/httpd/conf/vhosts
 To apache add
 ::
 
@@ -40,4 +41,19 @@ To apache add
 	WSGIProcessGroup staging
 	WSGIScriptAlias / /var/www/msm_user/data/www/msm-mural.digitalgizmo.com/mural/config/wsgi.py
 	# end insertion
+
+
+	?
+	<Directory /var/www/msm_user/data/www/msm-mural.digitalgizmo.com/mural/config>
+	   <Files wsgi.py>
+	      Order deny,allow
+	     Allow from all
+	  </Files>
+	</Directory>
+
+and then
+::
+	<Directory /var/www/msm_user/data/www/msm-mural.digitalgizmo.com>
+        Options +Includes +ExecCGI
+	</Directory>
 
