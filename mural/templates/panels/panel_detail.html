@@ -27,7 +27,11 @@
 
       <image id="document" x="0" y="0" xlink:href="{% static 'panels/panelpics/' %}{{ object.slug }}.jpg" width="874" height="2073" />
 
-      {% include 'panels/svg_includes/_'|add:object.slug|add:'-'|add:article.article_type|add:'.html' %}
+      {% if object.slug == 'child-labor' %}
+        {% include 'panels/svg_includes/_'|add:object.slug|add:'.html' %}
+      {% else %}
+        {% include 'panels/svg_includes/_placeholder.html' %}
+      {% endif %}
 
     </svg>
 

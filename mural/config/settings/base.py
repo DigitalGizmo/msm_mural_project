@@ -27,7 +27,7 @@ SECRET_KEY = '%-qkyq-id+=w)vd8p3+1#apulkq^@1h%vaq&lk1hsy(ww@h56h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['msm-mural.digitalgizmo.com']
+ALLOWED_HOSTS = ['msm-mural.digitalgizmo.com', '127.0.0.1']
 
 
 # Application definition
