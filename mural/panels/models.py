@@ -26,7 +26,7 @@ class Article(models.Model):
         choices=ARTICLE_TYPE)
     title = models.CharField(max_length=48, default='Title goes here')
     image_name = models.CharField(max_length=32, blank=True, default='')
-    caption = models.CharField('Image Caption', max_length=255, blank=True, default='')
+    caption = models.TextField(blank=True, default='')
     narrative = models.TextField(blank=True, default='')
 
     class Meta:

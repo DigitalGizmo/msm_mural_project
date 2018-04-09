@@ -1,7 +1,7 @@
 // option settings for Froala
 
 var froalaIntro = {
-	heightMin: 200,
+	heightMin: 170,
 	pastePlain: true,
 	toolbarButtons: ['italic', 'quote', 'formatOL', 'formatUL', 'superscript',
 		'|', 'undo', 'redo', 'clearFormatting', 'selectAll', 'html'],
@@ -72,7 +72,7 @@ var froalaSlim = {
 }
 
 var froalaBlurb = {
-	heightMin: 100,
+	heightMin: 80,
 	pastePlain: true,
 	placeholderText: 'Single (short) paragraph only.',
 	toolbarButtons: ['italic', '|', 'undo', 'redo', 'clearFormatting', 
@@ -81,5 +81,5 @@ var froalaBlurb = {
 		'selectAll', 'html'],
 	toolbarButtonsSM: ['italic', '|', 'undo', 'redo', 'clearFormatting', 
 		'selectAll', 'html'],
-	width: '400'
+	width: '600'
 }
