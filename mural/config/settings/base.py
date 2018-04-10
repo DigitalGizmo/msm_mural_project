@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['msm-mural.digitalgizmo.com', '127.0.0.1']
 
 INSTALLED_APPS = [
     'panels.apps.PanelsConfig',
+    'pops.apps.PopsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

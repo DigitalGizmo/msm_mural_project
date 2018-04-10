@@ -22,7 +22,6 @@ class ArticleAdmin(admin.ModelAdmin):
         #     'featured_specials']}),
     ]
     # filter_horizontal = ['people', 'evidence', 'contexts', 'featured_specials']    
-    #search_fields = ['title']
     list_display = ('title', 'panel', 'article_type')
     list_filter     = ['panel'] # , 'edit_date'
     # search_fields = ['title']
