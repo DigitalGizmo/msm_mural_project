@@ -68,6 +68,24 @@
 			</div>
 
 			{{ article.narrative|safe }}
+
+      {% if article.learnmore_set.all %}
+      <nav class="learn-more">
+        <h3>Learn More</h3>
+        <ul>
+        {% for learnmore in article.learnmore_set.all %}          
+          <li>
+            <a class="pop_item" href="pops/learn-fore-objects.html">
+              <img src="{% static 'pops/learnmore/thumbpics/' %}{{ learnmore.slug }}.jpg">
+              <span>{{learnmore.get_learnmore_type_display}}:</span>
+              {{learnmore.title|safe}}
+            </a> 
+        </li>
+        {% endfor %}            
+        </ul>
+      </nav>
+      {% endif %}
+
 		</article>
 
 	</div><!--/main-->
