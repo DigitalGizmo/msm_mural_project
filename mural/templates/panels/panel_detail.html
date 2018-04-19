@@ -63,7 +63,7 @@
         {{ article.title|safe }} 
       </h2>
 			<div class="img-left">
-        <img src="{% static 'panels/articlepics/' %}{{ object.slug }}-{{ article.article_type }}.jpg">
+        <img src="{% static 'panels/articlepics/' %}p{{ object.ordinal }}-{{ article.article_type }}.jpg">
 				<p class="caption">{{ article.caption|safe }}</p>
 			</div>
 
@@ -75,13 +75,13 @@
         <ul>
         {% for learnmore in article.learnmore_set.all %}          
           <li>
-            <a class="pop_item" href="pops/learn-fore-objects.html">
-              <img src="{% static 'pops/learnmore/thumbpics/' %}{{ learnmore.slug }}.jpg">
+            <a class="pop_item" href="{% url 'pops:'|add:learnmore.learnmore_type|add:'_ajax_detail' learnmore.id %}">
+              <img src="{% static 'pops/learnmore/thumbpics/' %}p{{ learnmore.article.panel.ordinal }}-{{ learnmore.article.article_type }}-{{ learnmore.learnmore_type }}.jpg">
               <span>{{learnmore.get_learnmore_type_display}}:</span>
               {{learnmore.title|safe}}
             </a> 
         </li>
-        {% endfor %}            
+        {% endfor %}    
         </ul>
       </nav>
       {% endif %}

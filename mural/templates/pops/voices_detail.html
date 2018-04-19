@@ -1,0 +1,31 @@
+{% extends "pops/base_detail.html" %}
+{% load staticfiles %}
+
+{% block slim_content%}
+		
+  {{ learnmore.narrative|safe }}
+
+  {% for voice in learnmore.voice_set.all %}          
+
+
+  <h3>{{ voice.title|safe}} </h3>
+  <audio class="voices" controls="">
+    <source src="{% static 'pops/learnmore/media/' %}p{{ voice.learnmore.article.panel.ordinal }}-{{ voice.learnmore.article.article_type }}-{{ voice.learnmore.learnmore_type }}-{{ voice.part_num }}.m4a" type="audio/mpeg">
+    <source src="{% static 'pops/learnmore/media/' %}p{{ voice.learnmore.article.panel.ordinal }}-{{ voice.learnmore.article.article_type }}-{{ voice.learnmore.learnmore_type }}-{{ voice.part_num }}.mp3" type="audio/mp3">
+    <source src="{% static 'pops/learnmore/media/' %}p{{ voice.learnmore.article.panel.ordinal }}-{{ voice.learnmore.article.article_type }}-{{ voice.learnmore.learnmore_type }}-{{ voice.part_num }}.oggXX" type="audio/ogg">
+    <!-- fallback -->
+       Your browser does not support the HTML5 audio element; instead you can 
+       <a href="pops/media/spago-quote.mp3">download 
+        this MP3 audio file.</a>
+  </audio>
+
+  <blockquote><!-- transcription -->
+	{{ voice.narrative|safe }}      
+  <cite>(citation - in transcription,or separate?)</cite> 
+
+
+  </blockquote>
+
+  {% endfor %}
+
+{% endblock slim_content %}

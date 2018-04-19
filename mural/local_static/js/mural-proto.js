@@ -33,6 +33,24 @@ $(document).ready(function(){
   // links loaded by ajax. (at least map dig deeper)
   // $(document).on("click", ".pop_item", function(event){
 
+  // -- .swap_pop --
+  // enable click event on slim that's already up
+  // "document on" sytntax required since this the markup was loaded by ajax.
+  $(document).on("click", ".swap_pop", function(event){
+    event.preventDefault();
+    // get href
+    var chosen_href = $(event.target).attr('href');
+    console.log('swap chosen_href: ' + chosen_href);
+    // var href_split = chosen_href.split('/');    
+    // var slimpopSizeClass = href_split[2];
+    // BTW supporting/base_detail_full also has slimpop-wrapper
+    var contentDiv = $('#slimpop-container');
+    // resize contentDiv
+    // contentDiv.removeClass().addClass("slimpop-basic").addClass(href_split[2]); 
+    // call ajax for the slim pop. 
+    getURL(chosen_href, contentDiv);
+  });
+
 }); // end doc ready
 
 /* 
