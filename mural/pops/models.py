@@ -11,10 +11,11 @@ class Learnmore(models.Model):
         ('voices','Voices'),
     )
     article = models.ForeignKey('panels.Article', on_delete=models.CASCADE)
-    learnmore_type = models.CharField(max_length=12, default='images', 
+    learnmore_type = models.CharField(max_length=12, default='today', 
         choices=LEARMORE_TYPE)
     # slug = models.SlugField('short name', max_length=48, unique=True)
     title = models.CharField(max_length=48)
+    alt_tag = models.CharField('Image description', max_length=48, blank=True, default='')
     caption = models.TextField(blank=True, default='')
     narrative = models.TextField(blank=True, default='')
 
@@ -27,6 +28,7 @@ class Slide(models.Model):
     learnmore = models.ForeignKey('pops.Learnmore', on_delete=models.CASCADE)
     slide_num = models.IntegerField()
     title = models.CharField(max_length=48, blank=True, default='')
+    alt_tag = models.CharField('Image description', max_length=48, blank=True, default='')
     caption = models.TextField(blank=True, default='')
     narrative = models.TextField(blank=True, default='')
 

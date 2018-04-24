@@ -12,6 +12,9 @@ urlpatterns = [
     path('video/ajax/<int:pk>/', views.VideoDetailView.as_view(), 
         name='video_ajax_detail'),
 
+    path('visit/ajax/<int:pk>/', views.VisitDetailView.as_view(), 
+        name='visit_ajax_detail'),
+
     path('voices/ajax/<int:pk>/', views.VoicesDetailView.as_view(), 
         name='voices_ajax_detail'),
 

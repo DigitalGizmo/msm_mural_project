@@ -15,6 +15,10 @@ class VoicesDetailView(DetailView):
     model = Learnmore
     template_name = "pops/voices_detail.html"
 
+class VisitDetailView(DetailView):
+    model = Learnmore
+    template_name = "pops/visit_detail.html"
+
 # ---- SLIDE-BASED ---
 
 class SlideDetailView(DetailView):

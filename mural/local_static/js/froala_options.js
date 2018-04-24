@@ -32,25 +32,6 @@ var froalaMeta = {
 	width: '800'
 }
 
-var froalaImage = {
-	heightMin: 300,
-	linkAlwaysBlank: true,
-	paragraphFormat: {
-		N: 'Normal',
-		DETAILS: 'read more'
-	},
-	pastePlain: true,
-	toolbarButtons: ['italic', 'superscript',  
-		'paragraphFormat', 'formatOL', 'formatUL', 'quote', 'insertLink', 'insertImage',
-		'superscript', '|', 'undo', 'redo', 'clearFormatting', 'selectAll', 'html'],
-	toolbarButtonsMD: ['italic', 'superscript',  
-		'paragraphFormat', 'formatOL', 'formatUL', 'quote', 'insertLink', 'insertImage',
-		'superscript', '|', 'undo', 'redo', 'clearFormatting', 'selectAll', 'html'],
-	toolbarButtonsSM: ['italic', 'superscript',  
-		'paragraphFormat', 'formatOL', 'formatUL', 'quote', 'insertLink', 'insertImage',
-		'superscript', '|', 'undo', 'redo', 'clearFormatting', 'selectAll', 'html'],
-	width: '800'
-}
 
 var froalaSlim = {
 	heightMin: 200,
@@ -82,4 +63,29 @@ var froalaBlurb = {
 	toolbarButtonsSM: ['italic', '|', 'undo', 'redo', 'clearFormatting', 
 		'selectAll', 'html'],
 	width: '600'
+}
+var froalaNarrow = {
+	heightMin: 200,
+	pastePlain: true,
+	placeholderText: 'Single (short) paragraph only.',
+	toolbarButtons: ['italic', '|', 'undo', 'redo', 'clearFormatting', 
+		'selectAll', 'html'],
+	toolbarButtonsMD: ['italic', '|', 'undo', 'redo', 'clearFormatting', 
+		'selectAll', 'html'],
+	toolbarButtonsSM: ['italic', '|', 'undo', 'redo', 'clearFormatting', 
+		'selectAll', 'html'],
+	width: '300'
+}
+
+var froalaTranscript = {
+	heightMin: 250,
+	pastePlain: true,
+	placeholderText: 'Single (short) paragraph only.',
+	toolbarButtons: ['italic', '|', 'undo', 'redo', 'clearFormatting', 
+		'selectAll', 'html'],
+	toolbarButtonsMD: ['italic', '|', 'undo', 'redo', 'clearFormatting', 
+		'selectAll', 'html'],
+	toolbarButtonsSM: ['italic', '|', 'undo', 'redo', 'clearFormatting', 
+		'selectAll', 'html'],
+	width: '500'
 }
