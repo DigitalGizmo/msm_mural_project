@@ -7,7 +7,6 @@ class Learnmore(models.Model):
         ('objects','Objects'),
         ('today','Today'),
         ('video','Video Story'),
-        ('visit','Visit'),
         ('voices','Voices'),
     )
     article = models.ForeignKey('panels.Article', on_delete=models.CASCADE)
@@ -70,4 +69,17 @@ class Voice(models.Model):
 
     def __str__(self):
         return self.learnmore.title + str(self.part_num)
+
+class Visit(models.Model):
+    """docstring for Visit"""
+    panel = models.ForeignKey('panels.Panel', on_delete=models.CASCADE)
+    title = models.CharField(max_length=48)
+    alt_tag = models.CharField('Image description', max_length=48, blank=True, default='')
+    caption = models.TextField(blank=True, default='')
+    narrative = models.TextField(blank=True, default='')
+
+    def __str__(self):
+        return "p" + str(self.panel.ordinal) + \
+        "-" + self.panel.slug + "-visit"
+
 

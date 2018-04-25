@@ -13,6 +13,7 @@
 
   <div class="panel-title">    
     <h1>{{ object.panel_title }}</h1>
+    {{ object.panel_blurb|safe }}
   </div>
 
   <div class="panel-nav"> 
@@ -50,10 +51,6 @@
             {{ object.foreground_title|safe }} 
           {% if article.article_type != 'fore' %}</a>{% endif %}
         </li>
-        <li {% if article.article_type == 'back' %} class="selected"{% endif %}>
-          {% if article.article_type != 'back' %}<a href="{% url 'panels:panel_detail' object.slug 'back' %}">{% endif %}Background
-          {% if article.article_type != 'back' %}</a>{% endif %}
-        </li>
 			</ul>
 		</nav>
 
@@ -68,6 +65,17 @@
 			</div>
 
 			{{ article.narrative|safe }}
+
+      {% if object.visit_set.all %}
+      Visit
+        {% for visit in object.visit_set.all %}  
+        <p>  
+          {{ visit.title|safe}}      
+        </p>
+        {% endfor %}    
+        </ul>
+      </nav>
+      {% endif %}
 
       {% if article.learnmore_set.all %}
       <nav class="learn-more">

@@ -2,9 +2,10 @@ from django.contrib import admin
 from .models import Panel, Article
 
 class PanelAdmin(admin.ModelAdmin):
+    change_form_template = 'panels/admin/panel_change_form.html'
     fieldsets = [
         (None,            {'fields': ['panel_title', 'slug', 'ordinal',
-        	'foreground_title']}),
+        	'panel_blurb']}),
         # ('Behind the scenes',   {'fields': ['status_num', 'ordinal', 'edited_by', 
         #     'edit_date', 'notes']}), # , 'classes': ['collapse']
     ]

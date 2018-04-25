@@ -5,6 +5,7 @@ from django.db import models
 class Panel(models.Model):
     slug = models.SlugField('short name', max_length=48, unique=True)
     panel_title = models.CharField(max_length=48)
+    panel_blurb = models.TextField(blank=True, default='')
     foreground_title = models.CharField(max_length=128, blank=True, default='')
     ordinal = models.IntegerField('Panel number', default=99)
 

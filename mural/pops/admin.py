@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Learnmore, Slide, Voice
+from .models import Learnmore, Slide, Voice, Visit
 
 class SingleLearnmoreAdmin(admin.ModelAdmin):
     change_form_template = 'panels/admin/panel_change_form.html'
@@ -10,7 +10,6 @@ class SingleLearnmoreAdmin(admin.ModelAdmin):
         ('Behind the scenes',   {'fields': ['learnmore_type'], 
             'classes': ['collapse']}),
     ]
-
     list_display = ('title', 'article', 'learnmore_type')
     list_filter     = ['article'] 
 
@@ -26,7 +25,6 @@ class SlideLearnmoreAdmin(admin.ModelAdmin):
         ('Behind the scenes',   {'fields': ['learnmore_type'], 
             'classes': ['collapse']}),
     ]
-
     inlines = [SlideInline]
     list_display = ('title', 'article', 'learnmore_type')
     list_filter     = ['article'] 
@@ -38,10 +36,6 @@ class Today(Learnmore):
         proxy = True
 
 class Video(Learnmore):
-    class Meta:
-        proxy = True
-
-class Visit(Learnmore):
     class Meta:
         proxy = True
 
@@ -73,11 +67,6 @@ class VideoAdmin(SingleLearnmoreAdmin):
     def get_changeform_initial_data(self, request):
         return {'learnmore_type': 'video'}
 
-class VisitAdmin(SingleLearnmoreAdmin):
-    def get_queryset(self, request):
-        return self.model.objects.filter(learnmore_type = 'visit')
-    def get_changeform_initial_data(self, request):
-        return {'learnmore_type': 'visit'}
 
 # Multiples
 class ImageAdmin(SlideLearnmoreAdmin):
@@ -109,10 +98,17 @@ class VoicesAdmin(admin.ModelAdmin):
         ('Behind the scenes',   {'fields': ['learnmore_type'], 
             'classes': ['collapse']}),
     ]
-
     inlines = [VoiceInline]
     list_display = ('title', 'article', 'learnmore_type')
     list_filter     = ['article'] 
+
+class VisitAdmin(admin.ModelAdmin):
+    change_form_template = 'panels/admin/panel_change_form.html'
+    fieldsets = [
+        (None,  {'fields': ['panel', 'title', 'alt_tag', 
+            'caption', 'narrative']}),  
+    ]
+    list_display = ('title', 'panel')
 
 
 admin.site.register(Today, TodayAdmin)
