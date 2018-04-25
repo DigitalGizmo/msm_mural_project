@@ -18,6 +18,9 @@ urlpatterns = [
     path('voices/ajax/<int:pk>/', views.VoicesDetailView.as_view(), 
         name='voices_ajax_detail'),
 
+    path('hotspot/ajax/<slug:slug>/', views.HotspotDetailView.as_view(), 
+        name='hotspot_ajax_detail'),
+
     # first call is without slide_num
     path('images/ajax/<int:pk>/', views.ImagesDetailView.as_view(), 
         name='images_ajax_detail'),

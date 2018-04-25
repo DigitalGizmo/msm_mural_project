@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Learnmore, Slide, Voice, Visit
+from .models import Learnmore, Slide, Voice, Visit, Hotspot
 
 class SingleLearnmoreAdmin(admin.ModelAdmin):
     change_form_template = 'panels/admin/panel_change_form.html'
@@ -111,12 +111,23 @@ class VisitAdmin(admin.ModelAdmin):
     list_display = ('title', 'panel')
 
 
+class HotspotAdmin(admin.ModelAdmin):
+    change_form_template = 'panels/admin/panel_change_form.html'
+    fieldsets = [
+        (None,  {'fields': ['panel', 'title', 'slug', 'alt_tag', 
+            ('x_position', 'y_position'), 'caption', 'narrative']}),  
+    ]
+    list_display = ('title', 'slug', 'panel', 'x_position', 'y_position')
+    list_filter     = ['panel'] 
+
+
 admin.site.register(Today, TodayAdmin)
 admin.site.register(Video, VideoAdmin)
 admin.site.register(Visit, VisitAdmin)
 admin.site.register(Image, ImageAdmin)
 admin.site.register(Object, ObjectAdmin)
 admin.site.register(Voices, VoicesAdmin)
+admin.site.register(Hotspot, HotspotAdmin)
 
 
 # class VoiceAdmin(admin.ModelAdmin):

@@ -83,3 +83,19 @@ class Visit(models.Model):
         "-" + self.panel.slug + "-visit"
 
 
+class Hotspot(models.Model):
+    """docstring for Visit"""
+    panel = models.ForeignKey('panels.Panel', on_delete=models.CASCADE)
+    slug = models.SlugField('short name', max_length=48, unique=True)
+    title = models.CharField(max_length=48)
+    alt_tag = models.CharField('Image description', max_length=48, blank=True, default='')
+    caption = models.TextField(blank=True, default='')
+    narrative = models.TextField(blank=True, default='')
+    x_position = models.IntegerField(blank=True, null=True)
+    y_position = models.IntegerField(blank=True, null=True)
+
+    def __str__(self):
+        return "p" + str(self.panel.ordinal) + \
+        "-" + self.panel.slug + "-hotspot" + "-" + self.title
+
+

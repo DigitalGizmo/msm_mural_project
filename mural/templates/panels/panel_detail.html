@@ -11,7 +11,7 @@
     <a href="/">return to Labor Mural Menu</a>
   </div>
 
-  <div class="panel-title">    
+  <div class="panel-title">     
     <h1>{{ object.panel_title }}</h1>
     {{ object.panel_blurb|safe }}
   </div>
@@ -28,12 +28,12 @@
 
       <image id="document" x="0" y="0" xlink:href="{% static 'panels/panelpics/' %}{{ object.slug }}.jpg" width="874" height="2073" />
 
-      {% if object.slug == 'child-labor' %}
-        {% include 'panels/svg_includes/_'|add:object.slug|add:'.html' %}
-      {% else %}
-        {% include 'panels/svg_includes/_placeholder.html' %}
-      {% endif %}
-
+      {% for hotspot in object.hotspot_set.all %}  
+        <a class="pop_item" href="{% url 'pops:hotspot_ajax_detail' hotspot.slug %}">
+          <circle class="hotspot" cx="{{ hotspot.x_position }}" 
+            cy="{{ hotspot.y_position }}" r="72"/>
+        </a>
+      {% endfor %}    
     </svg>
 
   </div><!--/panel-image-->
