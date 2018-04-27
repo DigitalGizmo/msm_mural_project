@@ -9,6 +9,22 @@ class Panel(models.Model):
     foreground_title = models.CharField(max_length=128, blank=True, default='')
     ordinal = models.IntegerField('Panel number', default=99)
 
+    # next, prev slide, false if none
+    def get_next(self):
+        next_list = Panel.objects.filter(ordinal__gt=self.ordinal)
+        if next_list:
+            return next_list.first()
+        return False
+
+    # Special condition added to prevent going back to slide 0 which is the intro
+    def get_prev(self):
+        prev_list = Panel.objects.filter(ordinal__lt=self.ordinal).order_by('-ordinal')
+        if prev_list:
+            prev = prev_list.first()
+            if prev.ordinal > 0:
+                return prev_list.first()
+        return False
+
     class Meta:
         ordering = ['ordinal']
 
@@ -31,7 +47,7 @@ class Article(models.Model):
     narrative = models.TextField(blank=True, default='')
 
     class Meta:
-        ordering = ['panel', 'article_type']
+        ordering = ['panel', '-article_type']
 
     def __str__(self):
         return str(self.panel.ordinal) + "-" + \

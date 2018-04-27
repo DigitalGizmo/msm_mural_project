@@ -3,6 +3,10 @@ from django.views.generic import DetailView
 from .models import Panel, Article
 
 class PanelDetailView(DetailView):
+    model = Panel
+    template_name = "panels/panel_detail.html"
+
+class PanelArticleView(DetailView):
     """
     Two parameters are sent: slug and article_type
     Slug finds the panel. From there we just have to find the right article
@@ -10,14 +14,14 @@ class PanelDetailView(DetailView):
     """
     model = Panel
     # context_object_name = 'object'
-    template_name = 'panels/panel_detail.html'
+    template_name = 'panels/article_detail.html'
 
     # get the initial, intro, article    
     def get_context_data(self, **kwargs):
         # get context
-        context = super(PanelDetailView, self).get_context_data(**kwargs)
+        context = super(PanelArticleView, self).get_context_data(**kwargs)
         # get panel object from detail view
-        panel_object = super(PanelDetailView, self).get_object()
+        panel_object = super(PanelArticleView, self).get_object()
 
         # # for later article_num will come from parameters
         # if kwargs['article_type']:

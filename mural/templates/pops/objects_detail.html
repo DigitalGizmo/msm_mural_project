@@ -21,7 +21,7 @@
 	      <a class="swap_pop"  
 	      href="{% url 'pops:'|add:slide.learnmore.learnmore_type|add:'_num_ajax_detail' slide.learnmore.id slide.get_prev.slide_num %}">&lArr; Previous</a>
 	    {% else %}
-	      <span class="no-more">&lArr; Previous</span>
+	      <span class="no-more">&lArr; previous</span>
 	    {% endif %}
 
 	   &diams;
@@ -29,7 +29,7 @@
 	      <a class="swap_pop"  
 	      href="{% url 'pops:'|add:slide.learnmore.learnmore_type|add:'_num_ajax_detail' slide.learnmore.id slide.get_next.slide_num %}">Next &rArr;</a>
 	    {% else %}
-	      <span class="no-more">Next &rArr;</span>
+	      <span class="no-more">next &rArr;</span>
 	    {% endif %}
 		</li>
 
