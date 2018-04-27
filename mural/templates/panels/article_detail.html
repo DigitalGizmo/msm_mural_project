@@ -12,7 +12,9 @@
 {% block panel_content %} {# everything inside the article div #}
 <div class="image">
   <img src="{% static 'panels/articlepics/' %}p{{ object.ordinal }}-{{ article.article_type }}.jpg">
-  <p class="caption">{{ article.caption|safe }}</p>
+  {% if article.article_type == 'intro' %}
+    <p class="caption">{{ article.caption|safe }}</p>
+  {% endif %}
 </div>
 
 <!-- begin text article -->
@@ -21,13 +23,12 @@
 </div>
 
 {% if object.visit_set.all %}
-  <p>Visit
+  <h3 class="visit-link">Visit Our Exhibit:
   {% for visit in object.visit_set.all %} 
     <a class="pop_item" 
     href="{% url 'pops:visit_ajax_detail' visit.id %}">{{ visit.title|safe}}</a>   
   {% endfor %} 
-  </p>   
-</nav>
+  </h3>
 {% endif %}
 
 {% if article.learnmore_set.all %}
