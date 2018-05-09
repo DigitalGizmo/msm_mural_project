@@ -29,6 +29,8 @@
     href="{% url 'pops:visit_ajax_detail' visit.id %}">{{ visit.title|safe}}</a>   
   {% endfor %} 
   </h3>
+{% else %}
+  <h3 class="visit-link">&nbsp;</h3>
 {% endif %}
 
 {# if article.learnmore_set.all #}
