@@ -3,7 +3,7 @@
 
 {% block slim_content%}
 		
-<div class="img-pop">
+<div class="pop-img">
 
 	<img src="{% static 'pops/learnmore/fullpics/' %}p{{ slide.learnmore.article.panel.ordinal }}-{{ slide.learnmore.article.article_type }}-{{ slide.learnmore.learnmore_type }}-{{ slide.slide_num }}.jpg">
 	{{ slide.caption|safe }}
@@ -24,7 +24,8 @@
 	      <span class="no-more">&lArr; previous</span>
 	    {% endif %}
 
-	   &diams;
+	  |
+	  
 	    {% if slide.get_next %}
 	      <a class="swap_pop"  
 	      href="{% url 'pops:'|add:slide.learnmore.learnmore_type|add:'_num_ajax_detail' slide.learnmore.id slide.get_next.slide_num %}">Next &rArr;</a>

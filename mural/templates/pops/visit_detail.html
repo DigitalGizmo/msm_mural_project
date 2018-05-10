@@ -3,14 +3,14 @@
 
 {% block slim_content%}
 		
-	<div class="img-pop">
+	<div class="pop-img">
 
 		<img src="{% static 'pops/learnmore/fullpics/' %}p{{ object.article.panel.ordinal }}-{{ object.article.article_type }}-{{ object.learnmore_type }}.jpg" alt="{{ object.alt_tag }}">
 		{{ object.caption|safe }}
 
 	</div> 
 
-  <h4>Visit</h4>
+  <h4>Visit: {{ object.title|safe }}</h4>
 	{{ object.narrative|safe }}
     
 {% endblock slim_content %}
