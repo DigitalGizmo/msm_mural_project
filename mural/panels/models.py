@@ -9,6 +9,18 @@ class Panel(models.Model):
     foreground_title = models.CharField(max_length=128, blank=True, default='')
     ordinal = models.IntegerField('Panel number', default=99)
 
+    # return list of panels
+    def panel_list(self):
+        return Panel.objects.all()
+
+    # provide x for postion in main menu
+    def main_x(self):
+        return 3 + ((self.ordinal - 1)*339)
+
+    # provide x for postion in main menu
+    def mini_x(self):
+        return 1 + ((self.ordinal - 1)*15)
+
     # next, prev slide, false if none
     def get_next(self):
         next_list = Panel.objects.filter(ordinal__gt=self.ordinal)

@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import TemplateView
+from panels import views
 
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name="index.html")),
+    # path('', TemplateView.as_view(template_name="index.html")),
+    path('', views.PanelListView.as_view(), name='index.html'),
     path('panels/', include('panels.urls', namespace='panels')),
     path('pops/', include('pops.urls', namespace='pops')),
     path('admin/', admin.site.urls),

@@ -1,6 +1,10 @@
 from django.shortcuts import get_object_or_404
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 from .models import Panel, Article
+
+class PanelListView(ListView):
+    model = Panel
+    template_name = "index.html"
 
 class PanelDetailView(DetailView):
     model = Panel
