@@ -6,7 +6,7 @@
 {% block panel_title %}
     <h3>{{ object.panel_title }}</h3>
     <h1>{{ article.title|safe }}</h1>
-    <p class="close-link"><a href="{% url 'panels:panel_detail' object.slug %}">close</a></p>
+    <p class="close-link"><a href="{% url 'panels:panel_detail' object.slug %}">Back</a></p>
 {% endblock panel_title %}
 
 {% block panel_content %} {# everything inside the article div #}
