@@ -40,11 +40,17 @@
   </div>
 
   <div class="prev-panel">
-    {% if object.get_prev %}
-      <a href="{% url 'panels:panel_detail' object.get_prev.slug %}">previous</a>
-    {% else %}
-      previous 
-    {% endif %}
+    <svg  xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+      viewBox="0 0 216 1800">
+
+      <image id="document" x="0" y="0" xlink:href="{% static 'panels/panelpics/' %}{{ object.slug }}-prev.jpg" width="216" height="1800" />
+
+      <a xlink:href="{% url 'panels:panel_detail' object.get_prev.slug %}">
+        <rect x="20" y="900" class="hotspot" width="20" height="20"/>
+      </a>
+
+    </svg>
 
   </div>
 
