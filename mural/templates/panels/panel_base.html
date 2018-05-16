@@ -23,14 +23,13 @@
 
   <div class="panel-nav"> 
     <svg id="tiny-panels" data-name="tiny-panels" xmlns="http://www.w3.org/2000/svg" 
-    viewBox="0 0 168 29" width="168" height="29" >
-
+    viewBox="0 0 148 29" width="148" height="29" >
       {% for panel in object.panel_list %}
         {% if panel.ordinal == object.ordinal %}
-          <rect x="{{ panel.mini_x }}" y="1" class="hotspot selected" width="15" height="27"/>
+          <rect x="{{ panel.mini_x }}" y="1" class="hotspot selected" width="13" height="27"/>
         {% else %}
           <a xlink:href="{% url 'panels:panel_detail' panel.slug %}">
-            <rect x="{{ panel.mini_x }}" y="1" class="hotspot" width="15" height="27"/>
+            <rect x="{{ panel.mini_x }}" y="1" class="hotspot" width="13" height="27"/>
           </a>
         {% endif %}
       {% endfor %}
@@ -46,9 +45,13 @@
 
       <image id="document" x="0" y="0" xlink:href="{% static 'panels/panelpics/' %}{{ object.slug }}-prev.jpg" width="216" height="1800" />
 
-      <a xlink:href="{% url 'panels:panel_detail' object.get_prev.slug %}">
-        <rect x="20" y="900" class="hotspot" width="20" height="20"/>
-      </a>
+      {% if object.get_prev %}
+        <a xlink:href="{% url 'panels:panel_detail' object.get_prev.slug %}">
+          <rect x="20" y="900" class="hotspot" width="30" height="30"/>
+        </a>
+      {% else %}
+          <rect x="20" y="900" class="hotspot" width="20" height="20"/>
+      {% endif %}
 
     </svg>
 
@@ -82,11 +85,21 @@
 	</div><!--/main-->
 
   <div class="next-panel">
-    {% if object.get_next %}
-      <a href="{% url 'panels:panel_detail' object.get_next.slug %}">next</a>
-    {% else %}
-      next 
-    {% endif %}
+    <svg  xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+      viewBox="0 0 216 1800">
+
+      <image id="document" x="0" y="0" xlink:href="{% static 'panels/panelpics/' %}{{ object.slug }}-next.jpg" width="216" height="1800" />
+
+      {% if object.get_next %}
+        <a xlink:href="{% url 'panels:panel_detail' object.get_next.slug %}">
+          <rect x="165" y="900" class="hotspot" width="30" height="30"/>
+        </a>
+      {% else %}
+          <rect x="165" y="900" class="hotspot no-more" width="30" height="30"/>
+      {% endif %}
+
+    </svg>
   </div>
 
 </div><!--/wrapper-->

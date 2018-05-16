@@ -19,7 +19,7 @@ class Panel(models.Model):
 
     # provide x for postion in main menu
     def mini_x(self):
-        return 1 + ((self.ordinal - 1)*15)
+        return 4 + ((self.ordinal - 1)*13)
 
     # next, prev slide, false if none
     def get_next(self):
