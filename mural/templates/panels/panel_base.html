@@ -41,9 +41,9 @@
   <div class="prev-panel">
     <svg  xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-      viewBox="0 0 216 1800">
+      viewBox="0 0 217.2 1800"> <!-- 216 1790 -->
 
-      <image id="document" x="0" y="0" xlink:href="{% static 'panels/panelpics/' %}{{ object.slug }}-prev.jpg" width="216" height="1800" />
+      <image id="document" x="0" y="0" xlink:href="{% static 'panels/panelpics/' %}{{ object.slug }}-prev.jpg" width="217.2" height="1800" />
 
       {% if object.get_prev %}
         <a xlink:href="{% url 'panels:panel_detail' object.get_prev.slug %}">
@@ -87,9 +87,9 @@
   <div class="next-panel">
     <svg  xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-      viewBox="0 0 216 1800">
+      viewBox="0 0 217.2 1800">
 
-      <image id="document" x="0" y="0" xlink:href="{% static 'panels/panelpics/' %}{{ object.slug }}-next.jpg" width="216" height="1800" />
+      <image id="document" x="0" y="0" xlink:href="{% static 'panels/panelpics/' %}{{ object.slug }}-next.jpg" width="217.2" height="1800" />
 
       {% if object.get_next %}
         <a xlink:href="{% url 'panels:panel_detail' object.get_next.slug %}">
