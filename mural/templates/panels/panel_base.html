@@ -47,10 +47,10 @@
 
       {% if object.get_prev %}
         <a xlink:href="{% url 'panels:panel_detail' object.get_prev.slug %}">
-          <rect x="20" y="900" class="hotspot" width="30" height="30"/>
+          <polyline class="arrows" points="54.24 803 24.24 833 54.24 863"/>
         </a>
       {% else %}
-          <rect x="20" y="900" class="hotspot" width="20" height="20"/>
+          <polyline class="arrows" points="54.24 803 24.24 833 54.24 863"/>
       {% endif %}
 
     </svg>
@@ -93,10 +93,10 @@
 
       {% if object.get_next %}
         <a xlink:href="{% url 'panels:panel_detail' object.get_next.slug %}">
-          <rect x="165" y="900" class="hotspot" width="30" height="30"/>
+          <polyline class="arrows" points="154.24 803 184.24 833 154.24 863"/>
         </a>
       {% else %}
-          <rect x="165" y="900" class="hotspot no-more" width="30" height="30"/>
+          <polyline class="arrows" points="154.24 803 184.24 833 154.24 863"/>
       {% endif %}
 
     </svg>

@@ -1,48 +1,35 @@
-// navigation
-
-.home-nav {
-	grid-area: a;
+// for tab nav of main panel content area (lozenge buttons)
+nav.tabs {
+	position: absolute;
+	bottom: 0px;
 }
-
-.panel-title {
-	color: $accent-color;
-	grid-area: b;
-	padding-left: $base-spacing;
-}
-
-.panel-nav {
-	grid-area: c;
-	text-align: right;
-}
-
-.home-nav, .panel-nav {
-	font-size: $small-font-size;
-	letter-spacing: 0.025em;
-	text-transform: uppercase;	
-}
-
-#tiny-panels {
-	cursor: pointer;
-	//display: block;
-	fill: $accent-color;
-	fill-opacity: 0.25;
-	stroke: white;
-  stroke-width: 2;
-}
-
-// for tab nav of main panel content area
 
 .tabs ul {
 	font-size: $small-font-size;
 	letter-spacing: 0.025em;
-	margin-bottom: $base-spacing;
 	text-transform: uppercase;
 
 	li {
-		display: inline;
-		margin: 4px $base-spacing $small-spacing 0;;
-		background-color: $light-gray;
+		background-color: $accent-color;
+		border: 1px solid darken($accent-color, 15%);
+		border-radius: $round-border-radius;
+		display: inline-block;
+		height: 60px;
+		line-height: $heading-line-height;
+		margin: 0px 5px 5px 5px;
 		padding: $small-spacing $base-spacing;
+		text-align: center;
+		vertical-align: top;
+		width: 260px;
+		
+		a:link, a:visited {
+			color: white;
+		}
+
+		a:hover {
+			color: $dark-gray;
+			text-decoration: underline;
+		}
 	}
 }
 
@@ -51,29 +38,90 @@
 	color: white;			
 }
 
+// for Learn More picture-links
+
 .learn-more {
-	clear: left;
 	background-color: $light-gray;
-	margin-left:  -$base-spacing;
-	margin-right:  -$base-spacing;
-	margin-bottom: -$base-spacing;
-	padding: $small-spacing $base-spacing;
+	margin-left:  -$base-spacing * 2;
+	margin-right:  -$base-spacing * 2;
+	height: 328px;
+	padding: $tiny-spacing $base-spacing * 2 $base-spacing * 3 $base-spacing * 2;
 
 	ul li {
 		display: inline-block;
-		font-size: $smallish-font-size;
+		font-size: $small-font-size;
 		line-height: $heading-line-height;
 		margin-right: $base-spacing;
 		vertical-align: top;
-		width: 20%;
+		width: 29%;
+
+		&:last-child {
+		  margin-right: 0px;
+		}
 
 		img {
 			border: $darker-border;
 		}
 
 		span {
-			display: block;
 			color: $medium-gray
 		}
+	}
+}
+
+// for Learn More slide shows
+
+.slide-nav {
+	text-align: right;
+
+	ul li {
+		display: inline;
+		
+		span.no-more {
+			color: $light-gray;
+		}
+
+		a:link, a:visited {
+			color: $dark-gray;
+		}
+		
+		a:hover {
+			color: $hover-color;
+			text-decoration: underline;
+		}
+	}
+}
+
+// for next, previous panel links
+
+.next-panel, .prev-panel {
+	//color: $light-gray;
+	position: relative;
+
+	a {
+		position: absolute;
+		top: 50%;
+	}
+}
+
+.arrows {
+  fill: none;
+  stroke: #f93;
+  stroke-linecap: round;
+  stroke-miterlimit: 10;
+  stroke-width: 6px;
+}
+
+// for visit link
+h3.visit-link {
+	color: $dark-gray;
+	font-size: $small-font-size;
+	font-weight: normal;
+	margin: $small-spacing 0;
+	text-align: center;
+
+	a {
+		color: $accent-color;
+		font-weight: bold;
 	}
 }

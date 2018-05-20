@@ -9,10 +9,10 @@ $base-font-family: $futura;
 $heading-font-family: $base-font-family;
 
 // Font Sizes
-$base-font-size: 1.25em;
-$smallish-font-size: 1em;
 $small-font-size: 0.75em;
-$medlarge-font-size: 1.25em;
+$smallish-font-size: 1em;
+$base-font-size: 1.25em;
+$medlarge-font-size: 1.5em;
 $large-font-size: 1.75em;
 $largest-font-size: 2.25em;
 
@@ -30,14 +30,14 @@ $xlarge-spacing: $base-spacing * 4;
 // Colors
 $dark-gray: #444 !default;
 $medium-gray: #999;
-$light-gray: #ddd;
+$light-gray: #eee;
 
 // Font Colors
 $base-font-color: $light-gray !default;
 $light-font-color: $medium-gray;
-$accent-color: #ff5e00;
+$accent-color: #ff9933;
 $action-color: $light-gray;
-$hover-color: #ff5e00;
+$hover-color: darken($accent-color, 25%);
 
 // Background Colors
 $base-background-color: black;
@@ -50,6 +50,7 @@ $darker-border: 1px solid $medium-gray;
 
 // Radii & Misc
 $base-border-radius: 3px !default;
+$round-border-radius: 60px;
 $base-z-index: 0;
 
 // Forms
