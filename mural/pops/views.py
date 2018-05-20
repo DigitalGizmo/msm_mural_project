@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import DetailView
-from .models import Learnmore, Slide, Hotspot
+from .models import Learnmore, Slide, Hotspot, Visit
 
 # ---- SINGLES ---
 class TodayDetailView(DetailView):
@@ -16,7 +16,7 @@ class VoicesDetailView(DetailView):
     template_name = "pops/voices_detail.html"
 
 class VisitDetailView(DetailView):
-    model = Learnmore
+    model = Visit
     template_name = "pops/visit_detail.html"
 
 class HotspotDetailView(DetailView):

@@ -71,7 +71,10 @@ class Voice(models.Model):
         return self.learnmore.title + str(self.part_num)
 
 class Visit(models.Model):
-    """docstring for Visit"""
+    """
+    Visit is different from Learnmore because it is a child of Panel, not
+    of Article
+    """
     panel = models.ForeignKey('panels.Panel', on_delete=models.CASCADE)
     title = models.CharField(max_length=48)
     alt_tag = models.CharField('Image description', max_length=48, blank=True, default='')
