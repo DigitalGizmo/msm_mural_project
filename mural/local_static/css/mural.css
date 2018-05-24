@@ -334,7 +334,7 @@ nav.tabs {
   .slide-nav ul li {
     display: inline; }
     .slide-nav ul li span.no-more {
-      color: #eee; }
+      color: #aeaeae; }
     .slide-nav ul li a:link, .slide-nav ul li a:visited {
       color: #444; }
     .slide-nav ul li a:hover {
@@ -392,7 +392,7 @@ h3.visit-link {
   margin-right: 1em; }
 
 .next-panel {
-  background-color: #444;
+  background-color: black;
   grid-column: 3;
   grid-row: 2;
   margin-left: 1em; }

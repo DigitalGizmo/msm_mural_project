@@ -49,8 +49,6 @@
         <a xlink:href="{% url 'panels:panel_detail' object.get_prev.slug %}">
           <polyline class="arrows" points="54.24 803 24.24 833 54.24 863"/>
         </a>
-      {% else %}
-          <polyline class="arrows" points="54.24 803 24.24 833 54.24 863"/>
       {% endif %}
 
     </svg>
@@ -95,8 +93,6 @@
         <a xlink:href="{% url 'panels:panel_detail' object.get_next.slug %}">
           <polyline class="arrows" points="154.24 803 184.24 833 154.24 863"/>
         </a>
-      {% else %}
-          <polyline class="arrows" points="154.24 803 184.24 833 154.24 863"/>
       {% endif %}
 
     </svg>
