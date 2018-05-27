@@ -1,0 +1,40 @@
+{% extends "pops/base_detail.html" %}
+{% load staticfiles %}
+
+{% block slim_content%}
+		
+<div class="pop-img">
+
+	<img src="{% static 'pops/learnmore/fullpics/' %}p{{ slide.learnmore.article.panel.ordinal }}-{{ slide.learnmore.article.article_type }}-{{ slide.learnmore.learnmore_type }}-{{ slide.slide_num }}.jpg">
+	{{ slide.caption|safe }}
+
+</div> 
+
+<h4>{{ slide.title|safe }}</h4>
+{{ slide.narrative|safe }}
+
+<nav class="slide-nav">
+	<ul>
+
+		<li>
+	    {% if slide.get_prev %}
+	      <a class="swap_pop"  
+	      href="{% url 'pops:'|add:slide.learnmore.learnmore_type|add:'_num_ajax_detail' slide.learnmore.id slide.get_prev.slide_num %}">&larr; Previous</a>
+	    {% else %}
+	      <span class="no-more">&larr;  previous</span>
+	    {% endif %}
+
+	  |
+	  
+	    {% if slide.get_next %}
+	      <a class="swap_pop"  
+	      href="{% url 'pops:'|add:slide.learnmore.learnmore_type|add:'_num_ajax_detail' slide.learnmore.id slide.get_next.slide_num %}">Next &rarr;</a>
+	    {% else %}
+	      <span class="no-more">next &rarr;</span>
+	    {% endif %}
+		</li>
+
+	</ul>
+</nav>
+
+{% endblock slim_content %}
