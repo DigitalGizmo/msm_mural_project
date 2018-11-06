@@ -1,35 +1,35 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
-{% block title %}Maine State Museum - Worker's Mural{% endblock %}
+{% block title %}Maine State Museum - The Maine Labor Mural{% endblock %}
 
 {% block full_page %}
  
   <div class="home">
 
-  	<h3>Learn About</h3>
+    <h3>Learn About</h3>
     <h1>The Maine Labor Mural</h1>
+  
     <p>Painted by Judy Taylor, Seal Cove, Maine<br/>
-        Oil on Panel<br/>
-        2008<br/>
-        On Loan from the Maine Department of Labor</p>
-
-    <svg xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 3732 754">
-
-      <image id="document" x="0" y="0" xlink:href="{% static 'panels/mural.jpg' %}" width="3732" height="754" />
-
-      {% for panel in object_list %}
-        <a xlink:href="{% url 'panels:panel_detail' panel.slug %}">
-          <rect x="{{ panel.main_x }}" y="2" class="mural-panel-hotspot" width="333" height="750"/>
-        </a>
-      {% endfor %}
-      
-    </svg>
-
-    <p class="prompt">Tap a panel to learn more</p>
+    <span class="prompt">2008, Oil on Panel, On Loan from the Maine Department of Labor</span>
+    </p>
 
     <p>The Maine Labor Mural depicts scenes of Maine&rsquo;s labor history in an effort to honor the men and women who built Maine. <a href="">Tap here</a> to learn more about the development of the Maine Labor Mural. To explore the artist&rsquo;s intentions behind the Mural, <a href="">Tap here</a>.</p>
+  
+    <p class="prompt">Tap a panel to learn more</p>
+
+    <svg xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 3732 754">
+
+    <image id="document" x="0" y="0" xlink:href="{% static 'panels/mural.jpg' %}" width="3732" height="754" />
+
+    {% for panel in object_list %}
+    <a xlink:href="{% url 'panels:panel_detail' panel.slug %}">
+    <rect x="{{ panel.main_x }}" y="2" class="mural-panel-hotspot" width="333" height="750"/>
+    </a>
+    {% endfor %}
+
+    </svg>
 
   </div>
 
