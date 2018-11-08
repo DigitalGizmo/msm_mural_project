@@ -11,11 +11,11 @@ div.image {
 	img {
 		border: $base-border;
 		margin: $tiny-spacing 0;
-		max-height: 440px;
+		max-height: 420px;
 	}
 
 	p {
-		margin-top: -$small-spacing;
+		margin-top: -$base-spacing;
 	}
 }
 
