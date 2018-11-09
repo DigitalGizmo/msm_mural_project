@@ -5,7 +5,12 @@
 		
 	<div class="img-pop">
 
-		<img src="{% static 'pops/learnmore/fullpics/' %}p{{ object.article.panel.ordinal }}-{{ object.article.article_type }}-{{ object.learnmore_type }}.jpg">
+		<video controls="controls">
+			<source src="{% static 'pops/media/' %}p{{ object.article.panel.ordinal }}-{{ object.article.article_type }}-{{ object.learnmore_type }}.webm" type="video/webm">
+			<source src="{% static 'pops/media/' %}p{{ object.article.panel.ordinal }}-{{ object.article.article_type }}-{{ object.learnmore_type }}.mp4" type="video/mp4">
+			Your browser does not support the video tag.
+		</video>
+
 		{{ object.caption|safe }}
 
 	</div> 
