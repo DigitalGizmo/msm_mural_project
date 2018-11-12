@@ -7,5 +7,9 @@
 	p {
 		width: 70%;
 		margin: $large-spacing auto;
+
+		a {
+			color: $accent-color;
+		}
 	}
 }

@@ -3,7 +3,7 @@
 
 {% block slim_content%}
 		
-	<div class="img-pop">
+	<div id="video-content">
 
 		<video width="960" height="540" controls="controls">
 			<source src="{% static 'pops/learnmore/media/' %}p{{ object.article.panel.ordinal }}-{{ object.article.article_type }}-{{ object.learnmore_type }}.webm" type="video/webm">
