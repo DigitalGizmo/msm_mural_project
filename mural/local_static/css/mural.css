@@ -526,16 +526,10 @@ h3.visit-link a {
   height: 370px;
   overflow: scroll;
   background-color: #eee;
-  /* to make vertical scrollbars visible. From https://stackoverflow.com/questions/7492062/css-overflow-scroll-always-show-vertical-scroll-bar and http://simurai.com/blog/2011/07/26/webkit-scrollbar*/
+  box-shadow: 0px -6px 6px 1px #999 inset;
 }
-.text-scroll ::-webkit-scrollbar {
-  -webkit-appearance: none;
-  width: 7px;
-}
-.text-scroll ::-webkit-scrollbar-thumb {
-  border-radius: 4px;
-  background-color: rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+.text-scroll p {
+  line-height: 1.88;
 }
 .text-scroll a {
   font-weight: bold;

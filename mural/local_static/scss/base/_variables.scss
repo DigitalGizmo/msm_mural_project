@@ -60,6 +60,7 @@ $form-box-shadow-focus: $form-box-shadow, 0 0 5px adjust-color($action-color, $l
 //shadows
 $title-shadow: 1px 1px 2px black;
 $drop-shadow: 5px 5px 8px rgba(0, 0, 0, 0.65);
+$inside-shadow: 0px -6px 6px 1px $medium-gray inset;
 
 // Animations
 $base-duration: 150ms;
