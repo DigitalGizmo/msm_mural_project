@@ -70,10 +70,11 @@
 }
 
 .text-scroll {
-	height: 370px;
-	overflow: scroll;
 	background-color: $light-gray;
 	box-shadow: $inside-shadow;
+	height: 370px;
+	overflow: scroll;
+	padding: 0 $small-spacing;
 
 	p {
 		line-height: $base-line-height * 1.175;
