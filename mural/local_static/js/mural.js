@@ -51,7 +51,100 @@ $(document).ready(function(){
     getURL(chosen_href, contentDiv);
   });
 
+  // ------- PANEL SLIDE ------
+
+  $(document).on("click", ".next", function(event){
+    event.preventDefault();
+    // get href
+    var chosen_href = $(event.target).attr('href');
+
+    // console.log('-- swipe href: ' + chosen_href);
+    // change url
+    history.pushState(null, null, chosen_href);
+    // goingForward = true
+    changePage(true);
+  });
+
+  $(document).on("click", ".prev", function(event){
+    event.preventDefault();
+    var chosen_href = $(event.target).attr('href');
+    history.pushState(null, null, chosen_href);
+    changePage(false);
+  });
+
 }); // end doc ready
+
+/*
+* Used by swipe
+*/
+function loadPage(url) {
+  return fetch(url, {
+    method: 'GET'
+  }).then(function(response) {
+    return response.text();
+  });
+}
+
+var main = $(".swipe-main");
+// var main = document.querySelector('main');
+
+function changePage(goingForward) {
+
+  // Note, the URL has already been changed
+  var url = window.location.href;
+
+  // console.log(" -- url in changePage: " + url);
+
+  loadPage(url).then(function(responseText) {
+
+    // grab old content section
+    // var oldContent = document.querySelector('.wrapper');
+    var oldContent = $('.wrapper');  
+    // console.log(" -- oldContent: " + oldContent.html()); // works
+
+    // var wholeHtml = document.createElement('div');
+    var wholeHtml = $(document.createElement('div'));
+
+      // wholeHtml.innerHTML = responseText;
+      wholeHtml.html(responseText);
+
+      // console.log(" -- responseText: " + responseText);
+      // console.log(" -- wholeHtml: " + wholeHtml.html()); // this works
+
+    // var newContent = wholeHtml.querySelector('.wrapper');
+    var newContent = wholeHtml.find(".wrapper");
+
+    // console.log(" -- newContent: " + newContent.html());
+
+    // main.appendChild(newContent);
+    $(".swipe-main").append(newContent);
+
+    animate(oldContent, newContent, goingForward);
+  });
+}
+
+// ------- PANEL SLIDE HELPERS ------
+
+function animate(oldContent, newContent, goingForward) {
+
+  // var goingForward = true;
+
+  TweenLite.set(newContent, {
+    visibility: 'visible',
+    xPercent: goingForward ? 100 : -100,
+    position: 'fixed',
+    left: 0,
+    top: 10,
+    right: 0
+  });
+
+  TweenMax.to(oldContent, .6, {xPercent: goingForward ? -100 : 100 } );
+  // TweenMax.to(newContent, 2, {xPercent: 0, ease:Linear.easeNone} );
+
+  TweenLite.to(newContent, .6, { xPercent: 0, onComplete: function() {
+    oldContent.remove();
+  }});
+}
 
 /* 
 *  used by popBox() and..
