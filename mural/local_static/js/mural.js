@@ -131,9 +131,9 @@ function animate(oldContent, newContent, goingForward) {
     visibility: 'visible',
     xPercent: goingForward ? 100 : -100,
     position: 'fixed',
-    left: 0,
-    top: 10,
-    right: 0
+    left: 8,
+    top: 8,
+    right: 8
   });
 
   TweenMax.to(oldContent, .6, {xPercent: goingForward ? -100 : 100 } );
