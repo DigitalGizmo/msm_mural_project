@@ -5,8 +5,9 @@ $(document).ready(function(){
   // -- .pop_item --
   // enable click event on menu items and text links
 
-  $(".pop_item").click(function(event){ // .mobile
+  // $(".pop_item").click(function(event){ // .mobile
   // $(".pop_item").on("click touchstart", function(event){
+  $(document).on("click", ".pop_item", function(event){
 
     console.log(" -- got to pop item: ");
     
@@ -74,9 +75,8 @@ $(document).ready(function(){
 
 }); // end doc ready
 
-/*
-* Used by swipe
-*/
+// ------- PANEL SLIDE HELPERS ------
+
 function loadPage(url) {
   return fetch(url, {
     method: 'GET'
@@ -122,8 +122,6 @@ function changePage(goingForward) {
     animate(oldContent, newContent, goingForward);
   });
 }
-
-// ------- PANEL SLIDE HELPERS ------
 
 function animate(oldContent, newContent, goingForward) {
 

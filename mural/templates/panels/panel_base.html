@@ -85,7 +85,7 @@
 
     <div class="next-panel">
 
-      {% if object.get_next %}
+      {% if object.get_next and object.get_next.ordinal < 50 %}
         <a class="next" href="{% url 'panels:panel_detail' object.get_next.slug %}">Next</a>        
       {% endif %}
 
