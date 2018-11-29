@@ -10,12 +10,18 @@
     var pixelOffsetY = 0;
     // Target element which should detect swipes.
     var swipeTarget = this;
+    // We want to ignore clicks on slim-pops, so target panel sepcifically
+    // Hmm, doesn't help, since the initial click is still "legal"
+    // var swipeTarget = $(".swipe-main");
+
     var defaultSettings = {
       // Amount of pixels, when swipe don't count.
       swipeThreshold: 70,
       // Flag that indicates that plugin should react only on touch events.
       // Not on mouse events too.
-      useOnlyTouch: false
+      // useOnlyTouch: false
+      // need true, Otherwise separate mouse clicks trigger swipe
+      useOnlyTouch: true
     };
 
     // Initializer
@@ -40,7 +46,15 @@
     }
 
     function swipeEnd(event) {
-      if (swipeState === 2) {
+
+      // if (swipeState === 2) {
+
+      // need to catch and stop the case where the click was on a slim-pop
+      if ($(event.target).closest("#slimpop-container").length) {
+        console.log(" -- slimpop-container was found");
+        // need to set swipe state to 0, otherwise click
+        swipeState = 0;
+      } else if (swipeState === 2) {
         swipeState = 0;
 
         if (
@@ -87,6 +101,11 @@
         pixelOffsetX = swipeOffsetX;
         pixelOffsetY = swipeOffsetY;
       }
+    }
+
+    // Create reset so that click on slim-pop doesn't count and swipe end
+    function reset() {
+      swipeState = 0;
     }
 
     return swipeTarget; // Return element available for chaining.

@@ -26,6 +26,11 @@ $(document).ready(function(){
     // console.log(" -- href_split length: " + href_split.length);
     // slimPop(ajaxHref, slimpopSizeClass);  
 
+    // Because of swipe-detect we need to reset so that click on pop
+    // doesn't count as release of a swipe
+    // Hmm, doesn't work
+    // $(".swipe-main").swipeDetector().reset();
+
     slimPop(chosen_href, "learn-more");
 
   });
