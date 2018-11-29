@@ -38,7 +38,9 @@
 
       if (event.originalEvent.touches) event = event.originalEvent.touches[0];
 
-      if (swipeState === 0) {
+      // Need to ignore touches on slim-pops
+      // if (swipeState === 0) {
+      if (swipeState === 0 && !$(event.target).closest("#slimpop-container").length) {
         swipeState = 1;
         startX = event.clientX;
         startY = event.clientY;
