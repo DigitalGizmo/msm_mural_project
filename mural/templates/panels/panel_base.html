@@ -42,17 +42,15 @@
 
     <div class="prev-panel">
 
+      {% if object.get_prev %}
+        <a class="prev" href="{% url 'panels:panel_detail' object.get_prev.slug %}">Prev</a>        
+      {% endif %}
+
       <svg  xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
         viewBox="0 0 217.2 1800"> <!-- 216 1790 -->
 
         <image id="document" x="0" y="0" xlink:href="{% static 'panels/panelpics/' %}{{ object.slug }}-prev.jpg" width="217.2" height="1800" />
-
-        {% if object.get_prev %}
-          <a class="prev" href="{% url 'panels:panel_detail' object.get_prev.slug %}">
-            <polyline class="arrows" points="54.24 803 24.24 833 54.24 863"/>
-          </a>
-        {% endif %}
 
       </svg>
 
@@ -88,7 +86,7 @@
     <div class="next-panel">
 
       {% if object.get_next and object.get_next.ordinal < 50 %}
-        <!-- <a class="next" href="{% url 'panels:panel_detail' object.get_next.slug %}">Next</a>         -->
+        <a class="next" href="{% url 'panels:panel_detail' object.get_next.slug %}">Next</a>        
       {% endif %}
 
       <svg  xmlns="http://www.w3.org/2000/svg"
@@ -96,13 +94,6 @@
         viewBox="0 0 217.2 1800">
 
         <image id="document" x="0" y="0" xlink:href="{% static 'panels/panelpics/' %}{{ object.slug }}-next.jpg" width="217.2" height="1800" />
-
-        {% if object.get_next %}
-          <a class="next" href="{% url 'panels:panel_detail' object.get_next.slug %}">
-            <polyline class="arrows" points="154.24 803 184.24 833 154.24 863"/>
-          </a>
-        {% endif %}
-
 
       </svg>
     </div>
