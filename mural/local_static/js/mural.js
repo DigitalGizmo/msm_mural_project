@@ -62,9 +62,9 @@ $(document).ready(function(){
   $(document).on("click", ".next", function(event){
     event.preventDefault();
     // get href
-    var chosen_href = $(event.target).attr('href');
+    var chosen_href = $(event.target).closest('a').attr('href');
 
-    // console.log('-- swipe href: ' + chosen_href);
+    console.log('-- swipe href: ' + chosen_href);
     // change url
     history.pushState(null, null, chosen_href);
     // goingForward = true
@@ -73,41 +73,41 @@ $(document).ready(function(){
 
   $(document).on("click", ".prev", function(event){
     event.preventDefault();
-    var chosen_href = $(event.target).attr('href');
+    var chosen_href = $(event.target).closest('a').attr('href');
     history.pushState(null, null, chosen_href);
     changePage(false);
   });
 
   // ---- TOUCH-SWIPE ----
 
-  $(function() {      
-    //Enable swiping...
-    $(".swipe-main").swipe( {
-      //Generic swipe handler for all directions
-      swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-        console.log("Ya'll swiped " + direction );
-        // $(".next").text("You swiped " + direction );
-        if(direction == "left") {
-          // get the element and href for next
-          var url = $(".next").attr('href');
-          // per mural.js changePage depends on updated url
-          if (url !== undefined) {
-            history.pushState(null, null, url);
-            changePage(true);       
-          }
-        } else if (direction == "right") {
-          var url = $(".prev").attr('href');
-          // console.log(" -- swipe url: " + url);
-          if (url !== undefined) {
-            history.pushState(null, null, url);
-            changePage(false);       
-          }          
-        }
-      },
-      //Default is 75px, set to 0 for demo so any distance triggers swipe
-       threshold:40
-    });
-  });
+  // $(function() {      
+  //   //Enable swiping...
+  //   $(".swipe-main").swipe( {
+  //     //Generic swipe handler for all directions
+  //     swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+  //       console.log("Ya'll swiped " + direction );
+  //       // $(".next").text("You swiped " + direction );
+  //       if(direction == "left") {
+  //         // get the element and href for next
+  //         var url = $(".next").attr('href');
+  //         // per mural.js changePage depends on updated url
+  //         if (url !== undefined) {
+  //           history.pushState(null, null, url);
+  //           changePage(true);       
+  //         }
+  //       } else if (direction == "right") {
+  //         var url = $(".prev").attr('href');
+  //         // console.log(" -- swipe url: " + url);
+  //         if (url !== undefined) {
+  //           history.pushState(null, null, url);
+  //           changePage(false);       
+  //         }          
+  //       }
+  //     },
+  //     //Default is 75px, set to 0 for demo so any distance triggers swipe
+  //      threshold:40
+  //   });
+  // });
 
 }); // end doc ready
 
