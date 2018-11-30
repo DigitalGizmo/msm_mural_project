@@ -97,20 +97,23 @@ nav.tabs {
 .next-panel, .prev-panel {
 	position: relative;
 
-	a {
+	a img {
 		position: absolute;
-		top: 50%;
+		top: 45%;
 	}
 }
 
-.arrows {
-  fill: black;
-  fill-opacity: 0;
-  stroke: #f93;
-  stroke-linecap: round;
-  stroke-miterlimit: 10;
-  stroke-width: 6px;
+.next-panel a img {
+	right: 2px;
 }
+// .arrows {
+//   fill: black;
+//   fill-opacity: 0;
+//   stroke: #f93;
+//   stroke-linecap: round;
+//   stroke-miterlimit: 10;
+//   stroke-width: 6px;
+// }
 
 // for visit link
 h3.visit-link {

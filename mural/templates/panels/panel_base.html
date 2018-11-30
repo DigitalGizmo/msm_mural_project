@@ -43,7 +43,9 @@
     <div class="prev-panel">
 
       {% if object.get_prev %}
-        <a class="prev" href="{% url 'panels:panel_detail' object.get_prev.slug %}">Prev</a>        
+        <a class="prev" href="{% url 'panels:panel_detail' object.get_prev.slug %}">
+          <img src="{% static 'panels/panelpics/arrow-prev.png' %}">
+        </a>        
       {% endif %}
 
       <svg  xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +88,9 @@
     <div class="next-panel">
 
       {% if object.get_next and object.get_next.ordinal < 50 %}
-        <a class="next" href="{% url 'panels:panel_detail' object.get_next.slug %}">Next</a>        
+        <a class="next" href="{% url 'panels:panel_detail' object.get_next.slug %}">
+          <img src="{% static 'panels/panelpics/arrow-next.png' %}">
+        </a>        
       {% endif %}
 
       <svg  xmlns="http://www.w3.org/2000/svg"

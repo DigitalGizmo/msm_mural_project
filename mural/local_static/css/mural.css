@@ -423,18 +423,13 @@ nav.tabs {
 .next-panel, .prev-panel {
   position: relative;
 }
-.next-panel a, .prev-panel a {
+.next-panel a img, .prev-panel a img {
   position: absolute;
-  top: 50%;
+  top: 45%;
 }
 
-.arrows {
-  fill: black;
-  fill-opacity: 0;
-  stroke: #f93;
-  stroke-linecap: round;
-  stroke-miterlimit: 10;
-  stroke-width: 6px;
+.next-panel a img {
+  right: 2px;
 }
 
 h3.visit-link {
