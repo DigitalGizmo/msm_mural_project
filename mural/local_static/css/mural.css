@@ -525,7 +525,8 @@ h3.visit-link a {
   padding: 0 0.8em;
 }
 .text-scroll p {
-  line-height: 1.88;
+  font-size: 1.025em;
+  line-height: 1.64;
 }
 .text-scroll a {
   font-weight: bold;
