@@ -80,12 +80,17 @@ $(document).ready(function(){
 
   // ---- TOUCH-SWIPE ----
 
-  $(function() {      
-    //Enable swiping...
-    $(".swipe-main").swipe( {
-      //Generic swipe handler for all directions
-      swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-        console.log("Ya'll swiped " + direction );
+
+  $(function() {
+    $(".swipe-main").swipe( { fingers:'all', swipeLeft:swipe1, swipeRight:swipe1, allowPageScroll:"auto"} );
+    // $("#test2").swipe( { swipeLeft:swipe1, allowPageScroll:"none"} );
+    // $("#test3").swipe( { swipeLeft:swipe2, swipeRight:swipe2} );
+    // $("#test4").swipe( { swipeStatus:swipe2, allowPageScroll:"vertical"} );
+    // // $("#test5").swipe( { swipeStatus:swipe2, allowPageScroll:"horizontal" } );
+    // $("#test6").swipe( { pinchStatus:pinch, allowPageScroll:"vertical" } );
+
+    //Swipe handlers.
+    function swipe1(event, direction, distance, duration, fingerCount) {        console.log("Ya'll swiped " + direction );
         // $(".next").text("You swiped " + direction );
         if(direction == "left") {
           // get the element and href for next
@@ -103,11 +108,40 @@ $(document).ready(function(){
             changePage(false);       
           }          
         }
-      },
-      //Default is 75px, set to 0 for demo so any distance triggers swipe
-       threshold:40
-    });
+    }
+
   });
+
+
+
+  // $(function() {      
+  //   //Enable swiping...
+  //   $(".swipe-main").swipe( {
+  //     //Generic swipe handler for all directions
+  //     swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+  //       console.log("Ya'll swiped " + direction );
+  //       // $(".next").text("You swiped " + direction );
+  //       if(direction == "left") {
+  //         // get the element and href for next
+  //         var url = $(".next").attr('href');
+  //         // per mural.js changePage depends on updated url
+  //         if (url !== undefined) {
+  //           history.pushState(null, null, url);
+  //           changePage(true);       
+  //         }
+  //       } else if (direction == "right") {
+  //         var url = $(".prev").attr('href');
+  //         // console.log(" -- swipe url: " + url);
+  //         if (url !== undefined) {
+  //           history.pushState(null, null, url);
+  //           changePage(false);       
+  //         }          
+  //       }
+  //     },
+  //     //Default is 75px, set to 0 for demo so any distance triggers swipe
+  //      threshold:40
+  //   });
+  // });
 
 }); // end doc ready
 
