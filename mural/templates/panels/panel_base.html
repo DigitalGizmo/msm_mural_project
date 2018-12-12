@@ -23,20 +23,15 @@
     </div>
 
     <div class="panel-nav"> 
-      <svg id="tiny-panels" data-name="tiny-panels" xmlns="http://www.w3.org/2000/svg" 
-      viewBox="0 0 148 29" width="148" height="29" >
-        {% for panel in object.panel_list %}
-          {% if panel.ordinal == object.ordinal %}
-            <rect x="{{ panel.mini_x }}" y="1" class="hotspot selected" width="13" height="27"/>
-          {% else %}
-            <a xlink:href="{% url 'panels:panel_detail' panel.slug %}">
-              <rect x="{{ panel.mini_x }}" y="1" class="hotspot" width="13" height="27"/>
-            </a>
-          {% endif %}
-        {% endfor %}
-        
-      </svg>
-      
+    {% for panel in object.panel_list %}
+      {% if panel.ordinal == object.ordinal %}
+        <img src="{% static 'images/mini-nav-selected.png' %}">
+      {% else %}
+        <a href="{% url 'panels:panel_detail' panel.slug %}">
+          <img src="{% static 'images/mini-nav.png' %}">
+        </a>
+      {% endif %}
+    {% endfor %}      
     </div>
 
     <div class="prev-panel">
