@@ -514,10 +514,12 @@ h3.visit-link a {
 }
 
 .panel-nav {
-  background-color: black;
   grid-column: 3;
   grid-row: 1;
   margin-left: 1em;
+}
+.panel-nav img {
+  margin-right: -2px;
 }
 
 .text-scroll {
