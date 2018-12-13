@@ -26,7 +26,7 @@
     {% for panel in object.panel_list %}
       {% if panel.ordinal == object.ordinal %}
         <img src="{% static 'images/mini-nav-selected.png' %}">
-      {% else %}
+      {% elif panel.ordinal < 50 %}
         <a href="{% url 'panels:panel_detail' panel.slug %}">
           <img src="{% static 'images/mini-nav.png' %}">
         </a>
