@@ -20,14 +20,12 @@ h4,
 h5,
 h6 {
   font-family: $heading-font-family;
-  font-weight: 700;
   line-height: $heading-line-height;
   margin: 0 0 $tiny-spacing 0;
 }
 
 
 p {
-  font-weight: 400;
   margin: 0 0 $small-spacing;
 }
 
@@ -72,14 +70,13 @@ blockquote {
 }
 
 .panel-title {
-//  color: $dark-gray;
   margin-bottom: 0;
   text-align: center;
 
   h1 {
     color: $accent-color;
-    line-height: 1em;
-    margin: 0;
+    //ine-height: 1em;
+    margin-bottom: -.05em;
   }
   
   h3 {
@@ -89,7 +86,7 @@ blockquote {
 
   p {
     font-size: $smallish-font-size;
-    line-height: $heading-line-height;
+    line-height: 1.075em;
     text-align: left;
 
     a {

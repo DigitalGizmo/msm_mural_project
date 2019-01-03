@@ -7,7 +7,7 @@ button {
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-family: "futura-pt", sans-serif;
+  font-family: "avenir-book", sans-serif;
   font-size: 1.25em;
   -webkit-font-smoothing: antialiased;
   font-weight: 600;
@@ -104,7 +104,7 @@ html {
 
 body {
   color: #eee;
-  font-family: "futura-pt", sans-serif;
+  font-family: "avenir-book", sans-serif;
   font-size: 1.25em;
   line-height: 1.6;
 }
@@ -115,14 +115,12 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "futura-pt", sans-serif;
-  font-weight: 700;
+  font-family: "avenir-black", sans-serif;
   line-height: 1.2;
   margin: 0 0 0.4em 0;
 }
 
 p {
-  font-weight: 400;
   margin: 0 0 0.8em;
 }
 
@@ -169,8 +167,7 @@ blockquote {
 }
 .panel-title h1 {
   color: #ff9933;
-  line-height: 1em;
-  margin: 0;
+  margin-bottom: -.05em;
 }
 .panel-title h3 {
   margin-bottom: 0;
@@ -178,7 +175,7 @@ blockquote {
 }
 .panel-title p {
   font-size: 1em;
-  line-height: 1.2;
+  line-height: 1.075em;
   text-align: left;
 }
 .panel-title p a {
