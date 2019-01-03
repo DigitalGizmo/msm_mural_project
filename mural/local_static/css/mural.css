@@ -360,7 +360,9 @@ nav.tabs {
   border: 1px solid #e67300;
   border-radius: 60px;
   display: inline-block;
+  font-weight: bold;
   height: 60px;
+  letter-spacing: 0.05em;
   line-height: 1.2;
   margin: 0px 5px 5px 5px;
   padding: 0.8em 1.6em;
