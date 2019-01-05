@@ -15,6 +15,10 @@ class VoicesDetailView(DetailView):
     model = Learnmore
     template_name = "pops/voices_detail.html"
 
+class CreditsDetailView(DetailView):
+    model = Learnmore
+    template_name = "pops/credits_detail.html"
+
 class VisitDetailView(DetailView):
     model = Visit
     template_name = "pops/visit_detail.html"

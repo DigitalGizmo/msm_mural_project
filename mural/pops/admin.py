@@ -35,6 +35,10 @@ class Today(Learnmore):
     class Meta:
         proxy = True
 
+class Credits(Learnmore):
+    class Meta:
+        proxy = True
+
 class Video(Learnmore):
     class Meta:
         proxy = True
@@ -53,6 +57,14 @@ class Voices(Learnmore):
         proxy = True
 
 # Singles
+class CreditsAdmin(SingleLearnmoreAdmin):
+    # Filter to show just the desired learnmore-type
+    def get_queryset(self, request):
+        return self.model.objects.filter(learnmore_type = 'credits')
+    # Auto set learnmore type for new
+    def get_changeform_initial_data(self, request):
+        return {'learnmore_type': 'credits'}
+
 class TodayAdmin(SingleLearnmoreAdmin):
     # Filter to show just the desired learnmore-type
     def get_queryset(self, request):
@@ -121,6 +133,7 @@ class HotspotAdmin(admin.ModelAdmin):
     list_filter     = ['panel'] 
 
 
+admin.site.register(Credits, CreditsAdmin)
 admin.site.register(Today, TodayAdmin)
 admin.site.register(Video, VideoAdmin)
 admin.site.register(Visit, VisitAdmin)

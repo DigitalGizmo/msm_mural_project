@@ -6,6 +6,9 @@ app_name="pops"
 
 urlpatterns = [
 
+    path('credits/ajax/<int:pk>/', views.CreditsDetailView.as_view(), 
+        name='credits_ajax_detail'),
+
     path('today/ajax/<int:pk>/', views.TodayDetailView.as_view(), 
         name='today_ajax_detail'),
 

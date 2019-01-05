@@ -5,6 +5,7 @@ class Learnmore(models.Model):
     LEARMORE_TYPE = (
         ('images','Images'),
         ('objects','Objects'),
+        ('credits','Credits'),
         ('today','Today'),
         ('video','Video Story'),
         ('voices','Voices'),
