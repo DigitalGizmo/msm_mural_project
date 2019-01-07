@@ -75,8 +75,8 @@ blockquote {
 
   h1 {
     color: $accent-color;
-    //ine-height: 1em;
-    margin-bottom: -.05em;
+    line-height: 1em;
+    margin: 0;
   }
   
   h3 {
@@ -86,7 +86,7 @@ blockquote {
 
   p {
     font-size: $smallish-font-size;
-    line-height: 1.075em;
+    line-height: $heading-line-height;
     text-align: left;
 
     a {
