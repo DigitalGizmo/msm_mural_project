@@ -1,8 +1,11 @@
-{% extends "pops/base_detail.html" %}
 {% load staticfiles %}
+{# Avoids extending pop/base_detail.html so that we don't show the h4 subhead for credits #}
 
-{% block slim_content%}
+<div id="slimpop-wrapper">
+	<p class="pop-close"><a href="javascript:hideBox();">close</a></p>
 		
+	<h1>{{ object.title|safe }}</h1>
+
 	{{ object.narrative|safe }}
-    
-{% endblock slim_content %}
+
+</div><!--slimpop-wrapper -->
