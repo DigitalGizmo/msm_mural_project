@@ -10,6 +10,7 @@ body {
   color: $base-font-color;
   font-family: $base-font-family;
   font-size: $base-font-size;
+  font-weight: 300;
   line-height: $base-line-height;
 }
 
@@ -75,8 +76,9 @@ blockquote {
 
   h1 {
     color: $accent-color;
+    font-size: 1.8em;
     line-height: 1em;
-    margin: 0;
+    margin-bottom: $tiny-spacing / 2;
   }
   
   h3 {
@@ -86,11 +88,11 @@ blockquote {
 
   p {
     font-size: $smallish-font-size;
-    line-height: $heading-line-height;
+    line-height: 1.1em;
     text-align: left;
 
     a {
       color: $accent-color;
-    }
+      font-weight: bold;    }
   }
 }
