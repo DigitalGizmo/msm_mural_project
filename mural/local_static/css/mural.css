@@ -7,7 +7,7 @@ button {
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-family: "futura-pt", sans-serif;
+  font-family: "futura", sans-serif;
   font-size: 1.25em;
   -webkit-font-smoothing: antialiased;
   font-weight: 600;
@@ -104,7 +104,7 @@ html {
 
 body {
   color: #eee;
-  font-family: "futura-pt", sans-serif;
+  font-family: "futura", sans-serif;
   font-size: 1.25em;
   line-height: 1.6;
 }
@@ -115,7 +115,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "futura-pt", sans-serif;
+  font-family: "futura", sans-serif;
   line-height: 1.2;
   margin: 0 0 0.4em 0;
 }
