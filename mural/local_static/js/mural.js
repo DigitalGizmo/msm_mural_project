@@ -53,6 +53,26 @@ $(document).ready(function(){
     var contentDiv = $('#slimpop-container');
     // resize contentDiv
     // contentDiv.removeClass().addClass("slimpop-basic").addClass(href_split[2]); 
+
+    // ----- Hack to make local swaps work 
+    // See if we're in local static mode -- all urls end with .html
+    // console.log(" last of href: " +  chosen_href.slice(-5));
+    if (chosen_href.slice(-5) == ".html") {
+      // Link from sitesucker looks like: 2/index.html
+      // needs to look like: ../../../pops/objects/ajax/10/2/index.html
+      // But subsequent slide links are: ../2/index.html
+      // so we need to strip that ../ , if present
+      if (chosen_href.split('/')[0] == "..") {
+        chosen_href = chosen_href.substring(3);
+        // console.log(" -- chosen_href: " + chosen_href);    
+      }
+      var nameAttrbutes = $(event.target).attr('name').split('/');
+      // console.log(" -- type: " + nameAttrbutes[0] + " id: " + nameAttrbutes[1]);
+      chosen_href = "../../../pops/" + nameAttrbutes[0] + "/ajax/" + nameAttrbutes[1] + "/" + chosen_href;
+      // console.log(" -- localHref: " + localHref);
+      // ------ end Hack       
+    }
+    
     // call ajax for the slim pop. 
     getURL(chosen_href, contentDiv);
   });
