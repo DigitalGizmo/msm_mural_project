@@ -42,39 +42,24 @@ $(document).ready(function(){
   // -- .swap_pop --
   // enable click event on slim that's already up
   // "document on" sytntax required since this the markup was loaded by ajax.
+  // Separating event from swap action so that swipe can call swap
   $(document).on("click", ".swap_pop", function(event){
     event.preventDefault();
     // get href
     var chosen_href = $(event.target).attr('href');
-    console.log('swap chosen_href: ' + chosen_href);
+    // console.log('swap chosen_href: ' + chosen_href);
+    var nameAttrbute = $(event.target).attr('name');
+    var goingForward = true;
+    if ($(event.target).attr('id') == "swap_prev") {
+      goingForward = false;
+    }
+    // legacy from impressions:
     // var href_split = chosen_href.split('/');    
-    // var slimpopSizeClass = href_split[2];
-    // BTW supporting/base_detail_full also has slimpop-wrapper
-    var contentDiv = $('#slimpop-container');
+    // var slimpopSizeClass = href_split[2]; 
     // resize contentDiv
     // contentDiv.removeClass().addClass("slimpop-basic").addClass(href_split[2]); 
 
-    // ----- Hack to make local swaps work 
-    // See if we're in local static mode -- all urls end with .html
-    // console.log(" last of href: " +  chosen_href.slice(-5));
-    if (chosen_href.slice(-5) == ".html") {
-      // Link from sitesucker looks like: 2/index.html
-      // needs to look like: ../../../pops/objects/ajax/10/2/index.html
-      // But subsequent slide links are: ../2/index.html
-      // so we need to strip that ../ , if present
-      if (chosen_href.split('/')[0] == "..") {
-        chosen_href = chosen_href.substring(3);
-        // console.log(" -- chosen_href: " + chosen_href);    
-      }
-      var nameAttrbutes = $(event.target).attr('name').split('/');
-      // console.log(" -- type: " + nameAttrbutes[0] + " id: " + nameAttrbutes[1]);
-      chosen_href = "../../../pops/" + nameAttrbutes[0] + "/ajax/" + nameAttrbutes[1] + "/" + chosen_href;
-      // console.log(" -- localHref: " + localHref);
-      // ------ end Hack       
-    }
-    
-    // call ajax for the slim pop. 
-    getURL(chosen_href, contentDiv);
+    swap(chosen_href, nameAttrbute, goingForward);
   });
 
   // ------- PANEL SLIDE ------
@@ -100,70 +85,68 @@ $(document).ready(function(){
 
   // ---- TOUCH-SWIPE ----
 
-
   $(function() {
-    $(".swipe-main").swipe( { fingers:'all', swipeLeft:swipe1, swipeRight:swipe1, allowPageScroll:"auto"} );
-    // $("#test2").swipe( { swipeLeft:swipe1, allowPageScroll:"none"} );
-    // $("#test3").swipe( { swipeLeft:swipe2, swipeRight:swipe2} );
-    // $("#test4").swipe( { swipeStatus:swipe2, allowPageScroll:"vertical"} );
-    // // $("#test5").swipe( { swipeStatus:swipe2, allowPageScroll:"horizontal" } );
-    // $("#test6").swipe( { pinchStatus:pinch, allowPageScroll:"vertical" } );
+    $(".swipe-main").swipe( { fingers:'all', swipeLeft:swipe1, 
+      swipeRight:swipe1, allowPageScroll:"auto"} );
 
-    //Swipe handlers.
-    function swipe1(event, direction, distance, duration, fingerCount) {        console.log("Ya'll swiped " + direction );
-        // $(".next").text("You swiped " + direction );
-        if(direction == "left") {
-          // get the element and href for next
-          var url = $(".next").attr('href');
-          // per mural.js changePage depends on updated url
-          if (url !== undefined) {
-            history.pushState(null, null, url);
-            changePage(true);       
-          }
-        } else if (direction == "right") {
-          var url = $(".prev").attr('href');
-          // console.log(" -- swipe url: " + url);
-          if (url !== undefined) {
-            history.pushState(null, null, url);
-            changePage(false);       
-          }          
+    // panel to panel Swipe handlers.
+    function swipe1(event, direction, distance, duration, fingerCount) {        
+      // console.log("Ya'll swiped " + direction );
+      // $(".next").text("You swiped " + direction );
+      if(direction == "left") {
+        // get the element and href for next
+        var url = $(".next").attr('href');
+        // per mural.js changePage depends on updated url
+        if (url !== undefined) {
+          history.pushState(null, null, url);
+          changePage(true);       
         }
+      } else if (direction == "right") {
+        var url = $(".prev").attr('href');
+        // console.log(" -- swipe url: " + url);
+        if (url !== undefined) {
+          history.pushState(null, null, url);
+          changePage(false);       
+        }          
+      }
     }
 
   });
-
-
-
-  // $(function() {      
-  //   //Enable swiping...
-  //   $(".swipe-main").swipe( {
-  //     //Generic swipe handler for all directions
-  //     swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-  //       console.log("Ya'll swiped " + direction );
-  //       // $(".next").text("You swiped " + direction );
-  //       if(direction == "left") {
-  //         // get the element and href for next
-  //         var url = $(".next").attr('href');
-  //         // per mural.js changePage depends on updated url
-  //         if (url !== undefined) {
-  //           history.pushState(null, null, url);
-  //           changePage(true);       
-  //         }
-  //       } else if (direction == "right") {
-  //         var url = $(".prev").attr('href');
-  //         // console.log(" -- swipe url: " + url);
-  //         if (url !== undefined) {
-  //           history.pushState(null, null, url);
-  //           changePage(false);       
-  //         }          
-  //       }
-  //     },
-  //     //Default is 75px, set to 0 for demo so any distance triggers swipe
-  //      threshold:40
-  //   });
-  // });
-
+ 
 }); // end doc ready
+
+function swap(chosen_href, nameAttrbute, goingForward) {
+  // ----- Hack to make local swaps work 
+  // See if we're in local static mode -- all urls end with .html
+  // console.log(" last of href: " +  chosen_href.slice(-5));
+  console.log(" chosen_href: " +  chosen_href);
+  if (chosen_href.slice(-5) == ".html") {
+    // Link from sitesucker looks like: 2/index.html
+    // needs to look like: ../../../pops/objects/ajax/10/2/index.html
+    // But subsequent slide links are: ../2/index.html
+    // so we need to strip that ../ , if present
+    if (chosen_href.split('/')[0] == "..") {
+      chosen_href = chosen_href.substring(3);
+      // console.log(" -- chosen_href: " + chosen_href);    
+    }
+    var nameAttrbutes = nameAttrbute.split('/');
+    // console.log(" -- type: " + nameAttrbutes[0] + " id: " + 
+    // nameAttrbutes[1]);
+    chosen_href = "../../../pops/" + nameAttrbutes[0] + 
+      "/ajax/" + nameAttrbutes[1] + "/" + chosen_href;
+    // console.log(" -- localHref: " + localHref);
+    // ------ end Hack       
+  }
+
+  // div will be hard-wired in changeSlide
+  var contentDiv = $('#slimpop-container');
+
+  // call ajax for the slim pop. (without transition) 
+  getURL(chosen_href, contentDiv);
+  // call slide transition 
+  // changeSlide(chosen_href, goingForward); // contentDiv, 
+
+}
 
 // ------- PANEL SLIDE HELPERS ------
 
@@ -175,9 +158,7 @@ function loadPage(url) {
   });
 }
 
-var main = $(".swipe-main");
-// var main = document.querySelector('main');
-
+// Full pannel transition
 function changePage(goingForward) {
 
   // Note, the URL has already been changed
@@ -213,6 +194,41 @@ function changePage(goingForward) {
   });
 }
 
+// Slideshow transition
+function changeSlide(popUrl, goingForward) { // contentDiv,
+
+  // console.log(" -- url in changePage: " + url);
+
+  loadPage(popUrl).then(function(responseText) {
+
+    // grab old content section
+    // var oldContent = document.querySelector('.wrapper');
+    // hard-wire to slimpop
+    var oldContent = $(".slideshow-wrapper");  
+    // console.log(" -- oldContent: " + oldContent.html()); // works
+
+    // var wholeHtml = document.createElement('div');
+    var wholeHtml = $(document.createElement('div'));
+
+      // wholeHtml.innerHTML = responseText;
+      wholeHtml.html(responseText);
+
+      // console.log(" -- responseText: " + responseText);
+      // console.log(" -- wholeHtml: " + wholeHtml.html()); // this works
+
+    // var newContent = wholeHtml.querySelector('.wrapper');
+    var newContent = wholeHtml.find(".slideshow-wrapper");
+
+    // console.log(" -- newContent: " + newContent.html());
+
+    // main.appendChild(newContent);
+    $(".slimpop-wrapper").append(newContent);
+
+    animateSlide(oldContent, newContent, goingForward);
+  });
+}
+
+// for full panel
 function animate(oldContent, newContent, goingForward) {
 
   // var goingForward = true;
@@ -234,6 +250,65 @@ function animate(oldContent, newContent, goingForward) {
   }});
 }
 
+// for pop box -- look for way to genearlize and combine with panel
+function animateSlide(oldContent, newContent, goingForward) {
+
+  // var goingForward = true;
+
+  var position = oldContent.position();
+  // $( "p:last" ).text( "left: " + position.left + ", top: " + position.top );
+
+  console.log(" - oldContent left: " + position.left + ", top: "+ position.top)
+
+  TweenLite.set(newContent, {
+    // visibility: 'visible',
+    xPercent: goingForward ? 100 : -100,
+    position: 'absolute',
+    left: 0,
+    top: 0
+    // right: 100
+  });
+
+  TweenMax.to(oldContent, .6, {xPercent: goingForward ? -100 : 100 } );
+  // TweenMax.to(newContent, 2, {xPercent: 0, ease:Linear.easeNone} );
+
+  // TweenLite.to(newContent, .6, { xPercent: 0, onComplete: function() {
+  //   oldContent.remove();
+  // }});
+
+  // Customize to remove only first
+  TweenLite.to(newContent, .6, { xPercent: 0, onComplete: function() {
+
+    // var slimTitle = $("#slimpop-container").find(".slimpop-wrapper").first().find("h4").last().html();
+    // console.log(" - slimTitle: " + slimTitle); 
+    // var slimTitle2 = $("#slimpop-container").find(".slimpop-wrapper").last().find("h4").last().html();
+    // console.log(" - slimTitle2: " + slimTitle2); 
+    // $("#slimpop-container").find(".slimpop-wrapper").first().detach();
+    
+    // $(".slimpop-wrapper").find(".slideshow-wrapper").first().remove();
+
+
+  }});
+
+  // TweenLite.to(newContent, .6, { xPercent: 0 });
+
+  console.log(" -- newContent left: " + position.left + ", top: "+ position.top)
+
+  // check if element is Visible
+  var isVisible = newContent.is(':visible');
+   
+  if (isVisible === true) {
+     console.log(" - newContent is visible ");
+  } else {
+     console.log(" - newContent NOT visible ");
+  }
+
+  // TweenLite.set(newContent, {
+  //   visibility: 'visible',
+  // });
+
+}
+
 /* 
 *  used by popBox() and..
 */
@@ -250,6 +325,42 @@ function slimPop(theURL, sizeClass) {
     $('#slimpop-overlay').click(function(event){
       hideBox();    
     });
+
+    // add swipe for slideshow pops
+    $(function() {
+      $("#slimpop-container").swipe( { fingers:'all', swipeLeft:swipe2, 
+        swipeRight:swipe2, allowPageScroll:"auto"} );
+
+      //Swipe handlers.
+      function swipe2(event, direction, distance, duration, fingerCount) {        
+        console.log("Swipe in pop " + direction );
+        // are we in a slideshow?
+        if ($(".slide-nav").length > 0) {
+          // console.log("-- there is a slide-nav ");
+          if(direction == "left") {
+            // get the name and href for next
+            var chosen_href = $("#swap_next").attr('href');
+            // console.log(" chosen_href in swipe2: " + chosen_href)
+            // if (chosen_href.length > 0) {
+            if (chosen_href != undefined) {
+              var nameAttrbute = $("#swap_next").attr('name');
+              // 3dr param, goingForward
+              swap(chosen_href, nameAttrbute, true);        
+            }
+          } else if (direction == "right") {
+            var chosen_href = $("#swap_prev").attr('href');
+            if (chosen_href != undefined) {
+              var nameAttrbute = $("#swap_prev").attr('name');
+              swap(chosen_href, nameAttrbute, false);        
+            }
+          }
+
+        } // end if slide-nav
+      } // end function
+
+  });
+
+
   } else { // clear the container -- otherwise previous content flashes by
     $('#slimpop-overlay').html = " ";
   }
@@ -258,7 +369,9 @@ function slimPop(theURL, sizeClass) {
   // assign contentDiv for further use
   var contentDiv = $('#slimpop-container');
   // contentDiv will be unhidden by specific classes 
-  contentDiv.removeClass().addClass("slimpop-basic"); 
+  // contentDiv.removeClass().addClass("slimpop-basic");
+  // Now trying without slimpop basic, so removeClass will just remove hidden 
+  contentDiv.removeClass().addClass("unhidden");
   //contentDiv.removeClass().addClass("slimpop-basic").addClass(sizeClass); 
   // call Ajax
   getURL(theURL, contentDiv);
@@ -309,7 +422,7 @@ function getURL(theURL, contentDiv) {
     //   $(window).scrollTop( 0 );
     // });
   }).fail(function(jqXHR) {
-    contentDiv.html('<div id="slimpop-wrapper">' + '<p>SlimPop error: ' + 
+    contentDiv.html('<div class="slimpop-wrapper">' + '<p>SlimPop error: ' + 
       jqXHR.status + '</p></div>')
     .append(jqXHR.responseText);
   });

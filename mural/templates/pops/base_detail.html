@@ -1,14 +1,19 @@
 {% load staticfiles %}
 
-<div id="slimpop-wrapper">
-	<p class="pop-close"><a href="javascript:hideBox();">close</a></p>
-		
-	<h4 class="subhead">{{ object.get_learnmore_type_display }}</h4>
-	<h1>{{ object.title|safe }}</h1>
+<div class="slimpop-wrapper">
+	<main class="slideshow-wrapper">
 
-	{% block slim_content%}
-		slim content
-	{% endblock slim_content %}
+		<p class="pop-close"><a href="javascript:hideBox();">close</a></p>
+			
+		<h4 class="subhead">{{ object.get_learnmore_type_display }}</h4>
+		<h1>{{ object.title|safe }}</h1>
+
+		{% block slim_content%}
+			slim content
+		{% endblock slim_content %}
+
+	</main> <!-- slideshow-wrapper -->
+
 
 </div><!--slimpop-wrapper -->
 
