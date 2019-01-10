@@ -31,6 +31,9 @@ $(document).ready(function(){
     // Hmm, doesn't work
     // $(".swipe-main").swipeDetector().reset();
 
+    // Swap may have set the height, so reset to default here
+    $("#slimpop-container").css("max-height", "85%");
+
     slimPop(chosen_href, "learn-more");
 
   });
@@ -138,13 +141,14 @@ function swap(chosen_href, nameAttrbute, goingForward) {
     // ------ end Hack       
   }
 
-  // div will be hard-wired in changeSlide
+  // If we use transition, div will be hard-wired in changeSlide
   var contentDiv = $('#slimpop-container');
 
   // call ajax for the slim pop. (without transition) 
-  getURL(chosen_href, contentDiv);
+  // getURL(chosen_href, contentDiv);
+
   // call slide transition 
-  // changeSlide(chosen_href, goingForward); // contentDiv, 
+  changeSlide(chosen_href, goingForward); // contentDiv, 
 
 }
 
@@ -204,7 +208,7 @@ function changeSlide(popUrl, goingForward) { // contentDiv,
     // grab old content section
     // var oldContent = document.querySelector('.wrapper');
     // hard-wire to slimpop
-    var oldContent = $(".slideshow-wrapper");  
+    var oldContent = $(".slimpop-wrapper");  
     // console.log(" -- oldContent: " + oldContent.html()); // works
 
     // var wholeHtml = document.createElement('div');
@@ -217,12 +221,12 @@ function changeSlide(popUrl, goingForward) { // contentDiv,
       // console.log(" -- wholeHtml: " + wholeHtml.html()); // this works
 
     // var newContent = wholeHtml.querySelector('.wrapper');
-    var newContent = wholeHtml.find(".slideshow-wrapper");
+    var newContent = wholeHtml.find(".slimpop-wrapper");
 
     // console.log(" -- newContent: " + newContent.html());
 
     // main.appendChild(newContent);
-    $(".slimpop-wrapper").append(newContent);
+    $("#slimpop-container").append(newContent);
 
     animateSlide(oldContent, newContent, goingForward);
   });
@@ -276,6 +280,7 @@ function animateSlide(oldContent, newContent, goingForward) {
   //   oldContent.remove();
   // }});
 
+
   // Customize to remove only first
   TweenLite.to(newContent, .6, { xPercent: 0, onComplete: function() {
 
@@ -285,27 +290,14 @@ function animateSlide(oldContent, newContent, goingForward) {
     // console.log(" - slimTitle2: " + slimTitle2); 
     // $("#slimpop-container").find(".slimpop-wrapper").first().detach();
     
-    // $(".slimpop-wrapper").find(".slideshow-wrapper").first().remove();
-
-
+    $("#slimpop-container").find(".slimpop-wrapper").first().remove();
   }});
 
-  // TweenLite.to(newContent, .6, { xPercent: 0 });
-
-  console.log(" -- newContent left: " + position.left + ", top: "+ position.top)
-
-  // check if element is Visible
-  var isVisible = newContent.is(':visible');
-   
-  if (isVisible === true) {
-     console.log(" - newContent is visible ");
-  } else {
-     console.log(" - newContent NOT visible ");
-  }
-
-  // TweenLite.set(newContent, {
-  //   visibility: 'visible',
-  // });
+  // Adjust height of #slimpop-container
+  console.log(" -- newContent height: " + newContent.height());
+  // fudge factor is for height of margins etc., beyond content
+  $("#slimpop-container").height(newContent.height() + 84);
+  // $("#slimpop-container").height(400);
 
 }
 
@@ -373,6 +365,7 @@ function slimPop(theURL, sizeClass) {
   // Now trying without slimpop basic, so removeClass will just remove hidden 
   contentDiv.removeClass().addClass("unhidden");
   //contentDiv.removeClass().addClass("slimpop-basic").addClass(sizeClass); 
+
   // call Ajax
   getURL(theURL, contentDiv);
 }
@@ -415,6 +408,13 @@ function getURL(theURL, contentDiv) {
     } else {
       contentDiv.animate({ scrollTop: 0 }, 0);    
     }
+
+    // // because we're setting slimpop-container height in slideshow, we have to set always
+    // $("#slimpop-container").height(contentDiv.height() + 84);
+
+
+
+
     // following callback wasn't needed since we're operating on the window.
     // contentDiv.html(data).promise().done(function(){
     //   // console.log(" -- success for html")
