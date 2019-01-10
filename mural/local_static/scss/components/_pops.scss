@@ -9,7 +9,7 @@
   display: block;
 }
 
-#slimpop-wrapper {
+.slimpop-wrapper {
   background-color: $pop-background-color;
   border: $base-border;
   color: $dark-gray;
@@ -52,11 +52,13 @@
 }
 
 // JavaScript assigns this (or .hidden) to slimpop-container
-.slimpop-basic {
+// .slimpop-basic { -- changes made for swiping/sliding of slideshows
+#slimpop-container {
   box-shadow: $drop-shadow;
   overflow-y: auto;
   position: fixed; /* this positions the slimpop relative to viewport, it won't scroll with the page */
-  right: 8%;
+  //right: 8%;
+  left: 80px;
   top: 8%;
   z-index: 100;
   max-width: 85%;
