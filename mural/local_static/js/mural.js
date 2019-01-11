@@ -32,7 +32,7 @@ $(document).ready(function(){
     // $(".swipe-main").swipeDetector().reset();
 
     // Swap may have set the height, so reset to default here
-    $("#slimpop-container").css("max-height", "85%");
+    // $("#slimpop-container").css("max-height", "85%");
 
     slimPop(chosen_href, "learn-more");
 
@@ -283,23 +283,22 @@ function animateSlide(oldContent, newContent, goingForward) {
 
   // Customize to remove only first
   TweenLite.to(newContent, .6, { xPercent: 0, onComplete: function() {
-
-    // var slimTitle = $("#slimpop-container").find(".slimpop-wrapper").first().find("h4").last().html();
-    // console.log(" - slimTitle: " + slimTitle); 
-    // var slimTitle2 = $("#slimpop-container").find(".slimpop-wrapper").last().find("h4").last().html();
-    // console.log(" - slimTitle2: " + slimTitle2); 
-    // $("#slimpop-container").find(".slimpop-wrapper").first().detach();
-    
     $("#slimpop-container").find(".slimpop-wrapper").first().remove();
   }});
 
   // Adjust height of #slimpop-container
-  console.log(" -- newContent height: " + newContent.height());
-  // fudge factor is for height of margins etc., beyond content
-  $("#slimpop-container").height(newContent.height() + 84);
-  // $("#slimpop-container").height(400);
+  // console.log(" -- newContent height: " + newContent.height());
+  // console.log(" -- css height: " + newContent.css("height"));
+  
+  // Need image height separately
+  var imgHeight = $("#slimpop-container").find("img").height();
+  // console.log(" -- img height: " + imgHeight);
+  // console.log(" -- newContent height: " + newContent.height());
 
-}
+  // fudge factor is for height of margins etc., beyond content
+  $("#slimpop-container").height(newContent.height() + 84 + imgHeight);
+
+ }
 
 /* 
 *  used by popBox() and..
@@ -409,18 +408,10 @@ function getURL(theURL, contentDiv) {
       contentDiv.animate({ scrollTop: 0 }, 0);    
     }
 
-    // // because we're setting slimpop-container height in slideshow, we have to set always
-    // $("#slimpop-container").height(contentDiv.height() + 84);
+    // -- reset to default -- mayb have been set to specific size by slieshow
+    contentDiv.css('height', '');
+    contentDiv.css('max-height', '85%');
 
-
-
-
-    // following callback wasn't needed since we're operating on the window.
-    // contentDiv.html(data).promise().done(function(){
-    //   // console.log(" -- success for html")
-    //   // scrollTop works on window, not div
-    //   $(window).scrollTop( 0 );
-    // });
   }).fail(function(jqXHR) {
     contentDiv.html('<div class="slimpop-wrapper">' + '<p>SlimPop error: ' + 
       jqXHR.status + '</p></div>')
