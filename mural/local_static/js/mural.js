@@ -363,15 +363,11 @@ function slimPop(theURL, sizeClass) {
   } else { // clear the container -- otherwise previous content flashes by
     $('#slimpop-overlay').html = " ";
   }
-  // unhide overlay
-  $('#slimpop-overlay').removeClass().addClass('unhidden');
   // assign contentDiv for further use
   var contentDiv = $('#slimpop-container');
   // contentDiv will be unhidden by specific classes 
   // contentDiv.removeClass().addClass("slimpop-basic");
-  // Now trying without slimpop basic, so removeClass will just remove hidden 
-  contentDiv.removeClass().addClass("unhidden");
-  //contentDiv.removeClass().addClass("slimpop-basic").addClass(sizeClass); 
+
 
   // call Ajax
   getURL(theURL, contentDiv);
@@ -406,6 +402,12 @@ function getURL(theURL, contentDiv) {
   // requestData,?
   $.get(theURL, function(data) {  
     contentDiv.html(data);
+
+    // unhide only now, after content is present
+    contentDiv.removeClass().addClass("unhidden");
+
+    // Legacy from Impressions?
+    //contentDiv.removeClass().addClass("slimpop-basic").addClass(sizeClass); 
     // console.log("--- attr name: " + contentDiv.attr('id'));
     // make sure we're scrolled to the top
     // in the case of full screen (mobile) the scroll has to operate on 
