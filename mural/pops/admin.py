@@ -26,7 +26,7 @@ class SlideLearnmoreAdmin(admin.ModelAdmin):
             'classes': ['collapse']}),
     ]
     inlines = [SlideInline]
-    list_display = ('title', 'article', 'learnmore_type')
+    list_display = ('title', 'id', 'article', 'learnmore_type')
     list_filter     = ['article'] 
 
 # Create proxy classes so each type can have its own admin
