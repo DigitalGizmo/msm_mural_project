@@ -16,7 +16,7 @@ $(document).ready(function(){
     // get href
     // use closest -- target may be image in dig deeper gallery
     var chosen_href = $(event.target).closest('a').attr('href');
-    console.log(" -- slim chosen_href: " + chosen_href);
+    // console.log(" -- slim chosen_href: " + chosen_href);
 
     // the following from Impressions for variable slim pop sizes
     // var href_split = chosen_href.split('/');    
@@ -72,7 +72,7 @@ $(document).ready(function(){
     // get href
     var chosen_href = $(event.target).closest('a').attr('href');
 
-    console.log('-- swipe href: ' + chosen_href);
+    // console.log('-- swipe href: ' + chosen_href);
     // change url
     history.pushState(null, null, chosen_href);
     // goingForward = true
@@ -122,7 +122,7 @@ function swap(chosen_href, nameAttrbute, goingForward) {
   // ----- Hack to make local swaps work 
   // See if we're in local static mode -- all urls end with .html
   // console.log(" last of href: " +  chosen_href.slice(-5));
-  console.log(" chosen_href: " +  chosen_href);
+  // console.log(" chosen_href: " +  chosen_href);
   if (chosen_href.slice(-5) == ".html") {
     // Link from sitesucker looks like: 2/index.html
     // needs to look like: ../../../pops/objects/ajax/10/2/index.html
@@ -262,7 +262,7 @@ function animateSlide(oldContent, newContent, goingForward) {
   var position = oldContent.position();
   // $( "p:last" ).text( "left: " + position.left + ", top: " + position.top );
 
-  console.log(" - oldContent left: " + position.left + ", top: "+ position.top)
+  // console.log(" - oldContent left: " + position.left + ", top: "+ position.top)
 
   TweenLite.set(newContent, {
     // visibility: 'visible',
@@ -286,18 +286,26 @@ function animateSlide(oldContent, newContent, goingForward) {
     $("#slimpop-container").find(".slimpop-wrapper").first().remove();
   }});
 
+
   // Adjust height of #slimpop-container
-  // console.log(" -- newContent height: " + newContent.height());
-  // console.log(" -- css height: " + newContent.css("height"));
-  
+
+
+
   // Need image height separately
   var imgHeight = $("#slimpop-container").find("img").height();
+
   // console.log(" -- img height: " + imgHeight);
   // console.log(" -- newContent height: " + newContent.height());
+  // console.log(" -- (css height: )" + newContent.css("height"));
+  // console.log(" -- newContent height  + imgHeight: " + 
+  //   (newContent.height()  + imgHeight)); //+ 84 + 84
 
   // fudge factor is for height of margins etc., beyond content
-  $("#slimpop-container").height(newContent.height() + 84 + imgHeight);
+  $("#slimpop-container").height(newContent.height() + 84 + imgHeight); // + 84
+  // using css heigh only
+  // $("#slimpop-container").height(newContent.css("height")); // + 84
 
+  // console.log(" -- (after- slim container css height: )" + $("#slimpop-container").css("height"));
  }
 
 /* 
