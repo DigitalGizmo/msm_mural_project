@@ -363,10 +363,14 @@ function slimPop(theURL, sizeClass) {
   } else { // clear the container -- otherwise previous content flashes by
     $('#slimpop-overlay').html = " ";
   }
+    // unhide overlay
+  $('#slimpop-overlay').removeClass().addClass('unhidden');
+  
   // assign contentDiv for further use
   var contentDiv = $('#slimpop-container');
   // contentDiv will be unhidden by specific classes 
   // contentDiv.removeClass().addClass("slimpop-basic");
+
 
 
   // call Ajax
