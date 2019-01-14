@@ -178,8 +178,8 @@ blockquote {
 }
 .panel-title p {
   font-size: 1em;
-  line-height: 1.1em;
   text-align: left;
+  line-height: 1.1em;
 }
 .panel-title p a {
   color: #ff9933;
@@ -232,14 +232,14 @@ blockquote {
 }
 
 #slimpop-container {
-  /*box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.65);*/
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.65);
   overflow-y: auto;
   position: fixed;
   /* this positions the slimpop relative to viewport, it won't scroll with the page */
   left: 80px;
   top: 8%;
   z-index: 100;
-  width: 85%;
+  max-width: 85%;
   max-height: 85%;
 }
 
@@ -288,10 +288,11 @@ div.image {
 div.image img {
   border: 1px solid #eee;
   margin: 0.4em 0;
-  max-height: 420px;
+  max-height: 400px;
 }
 div.image p {
-  margin-top: -1.6em;
+  margin-top: -0.8em;
+  line-height: 1.2;
 }
 
 #slideshow-image {
@@ -533,8 +534,9 @@ h3.visit-link a {
   line-height: 1.64;
 }
 .text-scroll a {
-  font-weight: bold;
   color: #ff9933;
+  font-weight: bold;
+  line-height: 1em;
 }
 
 /*# sourceMappingURL=mural.css.map */

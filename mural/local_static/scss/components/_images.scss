@@ -11,12 +11,13 @@ div.image {
 	img {
 		border: $base-border;
 		margin: $tiny-spacing 0;
-		max-height: 420px;
+		max-height: 400px;
 	}
 
 	p {
-		margin-top: -$base-spacing;
-	}
+		margin-top: -$small-spacing;
+  		line-height: $heading-line-height;
+  	}
 }
 
 #slideshow-image {

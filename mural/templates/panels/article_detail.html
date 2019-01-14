@@ -13,7 +13,7 @@
 <div class="image">
   <img src="{% static 'panels/articlepics/' %}p{{ object.ordinal }}-{{ article.article_type }}.jpg">
   {% if article.article_type == 'intro' %}
-    <p>{{ article.caption|safe }}</p><!--hey don, I removed the class on the p tag -->
+    {{ article.caption|safe }}
   {% endif %}
 </div>
 
