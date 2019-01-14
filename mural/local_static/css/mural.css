@@ -232,7 +232,6 @@ blockquote {
 }
 
 #slimpop-container {
-  /*box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.65);*/
   overflow-y: auto;
   position: fixed;
   /* this positions the slimpop relative to viewport, it won't scroll with the page */
@@ -240,7 +239,6 @@ blockquote {
   top: 8%;
   z-index: 100;
   width: 85%;
-  /*max-width: 85%;*/
   max-height: 85%;
 }
 
