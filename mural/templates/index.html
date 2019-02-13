@@ -7,35 +7,32 @@
  
   <div class="home">
 
-    <h3>Learn About</h3>
-    <h1>The Maine Labor Mural</h1>
-  
-    <p>Painted by Judy Taylor, Seal Cove, Maine<br/>
-    <span class="prompt">2008, Oil on Panel, On Loan from the Maine Department of Labor</span>
-    </p>
+    <h1>Maine Labor Mural</h1>
 
-    <p>The Maine Labor Mural depicts scenes of the state&rsquo;s labor history in an effort to honor the men and women who built Maine.<br/>
+    <p class="intro">The Maine Labor Mural depicts scenes of the state&rsquo;s labor history in an effort to honor the men and women who built Maine.</p>
 
-    <a class="pop_item" href="/pops/video/ajax/49/">Tap here</a> to learn more about the development of the Maine Labor Mural.<br/>
-    <a class="pop_item" href="/pops/video/ajax/50/">Tap here</a> to explore the artist&rsquo;s intentions behind the Mural.</p>
+    <p>Oil on panel; painted by Judy Taylor, Seal Cove, Maine, 2008<br/>
+    Commissioned by the Maine Department of Labor; transferred to the Maine State Museum in 2019.</p>
   
-    <p class="prompt">Tap a panel to learn more</p>
+    <p>Tap a panel to learn more</p>
 
     <svg xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 3732 754">
 
-    <image id="document" x="0" y="0" xlink:href="{% static 'panels/mural.jpg' %}" width="3732" height="754" />
+        <image id="document" x="0" y="0" xlink:href="{% static 'panels/mural.jpg' %}" width="3732" height="754" />
 
-    {% for panel in object_list %}
-    <a xlink:href="{% url 'panels:panel_detail' panel.slug %}">
-    <rect x="{{ panel.main_x }}" y="2" class="mural-panel-hotspot" width="333" height="750"/>
-    </a>
-    {% endfor %}
+        {% for panel in object_list %}
+            <a xlink:href="{% url 'panels:panel_detail' panel.slug %}">
+                <rect x="{{ panel.main_x }}" y="2" class="mural-panel-hotspot" width="333" height="750"/>
+            </a>
+        {% endfor %}
 
     </svg>
 
-    <p class="prompt pop_item"><a href="/pops/credits/ajax/52">Credits</a></p>
+    <p><a class="pop_item" href="/pops/video/ajax/49/">Tap here</a> to learn more about the development of the Maine Labor Mural.<br/>
+    <a class="pop_item" href="/pops/video/ajax/50/">Tap here</a> to explore the artist&rsquo;s intentions behind the mural.</p>
 
+    <p class="prompt pop_item"><a href="/pops/credits/ajax/52">Credits</a></p>
 
   </div>
 

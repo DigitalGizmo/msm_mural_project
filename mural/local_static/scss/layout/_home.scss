@@ -1,12 +1,22 @@
 // home layout
 
 .home {
-	padding: $large-spacing $base-spacing;
+	padding: $base-spacing;
 	text-align: center;
 
+	h1 {
+		color: $accent-color;
+		padding-top: $large-spacing;
+	}
+
 	p {
-		width: 70%;
-		margin: $large-spacing auto;
+		color: $base-font-color;
+		margin: $base-spacing auto;
+
+		&.intro {
+			font-size: $medlarge-font-size;
+			line-height: $heading-line-height;
+		}
 
 		a {
 			color: $accent-color;

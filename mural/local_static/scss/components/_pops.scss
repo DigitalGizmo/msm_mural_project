@@ -54,10 +54,8 @@
 // JavaScript assigns this (or .hidden) to slimpop-container
 // .slimpop-basic { -- changes made for swiping/sliding of slideshows
 #slimpop-container {
-  //box-shadow: $drop-shadow;
   overflow-y: auto;
   position: fixed; /* this positions the slimpop relative to viewport, it won't scroll with the page */
-  //right: 8%;
   left: 80px;
   top: 8%;
   z-index: 100;

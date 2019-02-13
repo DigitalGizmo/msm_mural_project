@@ -451,12 +451,20 @@ h3.visit-link a {
 }
 
 .home {
-  padding: 3.2em 1.6em;
+  padding: 1.6em;
   text-align: center;
 }
+.home h1 {
+  color: #ff9933;
+  padding-top: 3.2em;
+}
 .home p {
-  width: 70%;
-  margin: 3.2em auto;
+  color: #eee;
+  margin: 1.6em auto;
+}
+.home p.intro {
+  font-size: 1.5em;
+  line-height: 1.2;
 }
 .home p a {
   color: #ff9933;
