@@ -6,6 +6,10 @@ class PanelListView(ListView):
     model = Panel
     template_name = "index.html"
 
+class AttractListView(ListView):
+    model = Panel
+    template_name = "attract.html"
+
 class PanelDetailView(DetailView):
     model = Panel
     template_name = "panels/panel_detail.html"

@@ -22,6 +22,7 @@ from panels import views
 urlpatterns = [
     # path('', TemplateView.as_view(template_name="index.html")),
     path('', views.PanelListView.as_view(), name='index.html'),
+    path('attract/', views.AttractListView.as_view(), name='attract.html'),
     path('panels/', include('panels.urls', namespace='panels')),
     path('pops/', include('pops.urls', namespace='pops')),
     path('admin/', admin.site.urls),
