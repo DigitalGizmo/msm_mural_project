@@ -5,7 +5,7 @@ $(document).ready(function(){
 	// Assign timer to a variable
 	var timeoutHandle;
 	// Minutes for this page
-	var numMinutes = .5;
+	var numMinutes = 3;
 
 	function startTheTimer() {
 		timeoutHandle = window.setTimeout(function(){
